@@ -17,12 +17,15 @@
 			<p>JSTL</p>
 			<ol>
 				<li><a href="jstl1">코어 라이브러리</a></li>
+				<li><a href="jstl3">jstl연습</a></li>
 			</ol>
 		</li>
 		<li>
 			<p>Parameter 전달</p>
 			<ol>
-				<li><a href=""></a></li>
+				<li><a href="param1">POST방식의 form전달</a></li>
+				<li><a href="param2">POST방식의 form전달2</a></li>
+				<li><a href="param3?num=100&num2=101">GET방식의 form전달</a></li>
 			</ol>
 		</li>
 		<li>

@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="global.sesoc.web2">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

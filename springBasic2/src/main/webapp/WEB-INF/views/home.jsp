@@ -46,9 +46,11 @@
 				</ol>
 			</li>
 			<li>
-				<p>Cookie 전달</p>
+				<p>Cookie 사용</p>
 				<ol>
-					<li><a href=""></a></li>
+					<li><a href="cookie1">쿠키 저장</a></li>
+					<li><a href="cookie2">쿠키 삭제</a></li>
+					<li><a href="cookie3">쿠키 확인</a></li>
 				</ol>
 			</li>
 		</ul>

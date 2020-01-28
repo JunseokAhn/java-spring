@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sample Project</title>
+<title>Home</title>
 </head>
 <body>
-<h1>[ Spring과 Mybatis를 이용한 Web Application 예제]</h1>
-<ul>
-	<li><a href="inputForm">입력 폼으로 이동</a></li>
-</ul>
+	<a href="input">회원가입</a>
+	<a href="login">로그인</a>
 </body>
 </html>

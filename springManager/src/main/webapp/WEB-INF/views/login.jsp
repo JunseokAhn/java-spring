@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="login2" method="post">
+	<form action="login" method="post">
 		이름
 		<input id="userName" name="name" type="text">
 		나이

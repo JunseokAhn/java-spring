@@ -12,19 +12,17 @@ public class dao {
 	@Autowired
 	private SqlSession session;
 
-	public void input(String name, int age, String address) {
+	public VO input(VO vo) {
 		// TODO Auto-generated method stub
 
 		mapper mapper = session.getMapper(mapper.class);
-		VO vo = new VO(name, age, address);
-		
-		/*
-		 * VO vo = new VO(); vo.setAge(age); vo.setAddress(address); vo.setName(name);
-		 */
+	
 		mapper.input(vo);
+		
+		return vo;
 	}
 
-	public VO search(VO vo) {
+	public VO login(VO vo) {
 		// TODO Auto-generated method stub
 
 		mapper mapper = session.getMapper(mapper.class);

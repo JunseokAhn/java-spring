@@ -61,9 +61,7 @@ public class SignController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		session.setAttribute("name", null);
-		session.setAttribute("age", null);
-		session.setAttribute("address", null);
+		session.invalidate();
 		return "redirect:/";
 	}
 	

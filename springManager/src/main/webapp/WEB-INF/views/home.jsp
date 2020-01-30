@@ -12,12 +12,15 @@
 	<c:if test="${sessionScope.name==null }">
 		<a href="input">회원가입</a>
 		<a href="login">로그인</a>
+		<a href="admin">관리자메뉴</a>
 	</c:if>
 	<c:if test="${sessionScope.name!=null }">
 		<a href="logout">로그아웃</a>
 		<a href="search">정보조회</a>
 		<a href="">글쓰기</a>
 	</c:if>
+	<hr>
+	
 	<script type="text/javascript">
 	
 	</script>

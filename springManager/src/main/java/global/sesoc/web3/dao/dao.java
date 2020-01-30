@@ -1,5 +1,7 @@
 package global.sesoc.web3.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,9 +18,9 @@ public class dao {
 		// TODO Auto-generated method stub
 
 		mapper mapper = session.getMapper(mapper.class);
-	
+
 		mapper.input(vo);
-		
+
 		return vo;
 	}
 
@@ -29,6 +31,23 @@ public class dao {
 		VO res = mapper.search(vo);
 
 		return res;
+	}
+
+	public ArrayList<VO> searchAll() {
+		// TODO Auto-generated method stub
+		
+		mapper mapper = session.getMapper(mapper.class);
+		ArrayList<VO> list = mapper.searchAll();
+		
+		return list;
+	}
+
+	public boolean delete(String name) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		int res = mapper.delete(name);
+		
+		return res>0;
 	}
 
 }

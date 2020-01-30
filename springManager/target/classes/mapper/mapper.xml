@@ -14,4 +14,14 @@
 	from person
 	where name like #{name}
 	</select>
+	
+	<select id="searchAll" resultType="VO">
+	select *
+	from person
+	</select>
+	
+	<delete id="delete" parameterType="String">
+	delete from person
+	where name = #{name}
+	</delete>
 </mapper>

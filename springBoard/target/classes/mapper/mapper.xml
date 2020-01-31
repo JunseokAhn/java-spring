@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.springBoard.dao.mapper2">
+
+	<insert id="writing" parameterType="VO">
+		insert into guestbook
+		(num,
+		name, password, contents )
+		values
+		(guestbook_seq.nextval,
+		#{name},
+		#{password},
+		#{contents}
+		)
+	</insert>
+
+	<select id="reading" resultType="VO">
+		select num, name, password,
+		contents, to_char(inputdate, 'YY/MM/DD') inputdate from guestbook
+		order by num desc
+	</select>
+
+	<delete id="deleting" parameterType="map">
+		delete from guestbook
+		where
+		num=#{num} and password=#{password}
+	</delete>
+</mapper>

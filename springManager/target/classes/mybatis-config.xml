@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="global.sesoc.sample.vo.Person" alias="person"/>
+		<typeAlias type="global.sesoc.web3.vo.VO" alias="VO"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="mapper/personMapper.xml" />
+		<mapper resource="mapper/mapper.xml" />
 	</mappers>
 </configuration>

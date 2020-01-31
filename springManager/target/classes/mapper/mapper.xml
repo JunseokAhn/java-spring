@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="global.sesoc.web3.dao.mapper">
+	<insert id="input" parameterType="VO">
+		insert into person
+		(name, age,
+		address)
+		values
+		(#{name}, #{age}, #{address})
+	</insert>
+	
+	<select id="search" parameterType="VO" resultType="VO">
+	select *
+	from person
+	where name like #{name}
+	</select>
+	
+	<select id="searchAll" resultType="VO">
+	select *
+	from person
+	</select>
+	
+	<delete id="delete" parameterType="String">
+	delete from person
+	where name = #{name}
+	</delete>
+</mapper>

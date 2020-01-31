@@ -61,27 +61,16 @@ public class JstlController {
 		M.addAttribute("arr", arr);
 		return "jstl2Test";
 	}
-	@RequestMapping(value = "/jstl3", method = RequestMethod.GET)
-	public String jstl3(Model model) {
-		Person person = new Person();
-		person.setName("홍길동");
-		person.setAddress("서울");
-		person.setAge(20);
-		
-		ArrayList<Person> list = new ArrayList<Person>();
-		Person p = new Person();
-		p.setName("김철수");
-		p.setAddress("부산");
-		p.setAge(30);
-		list.add(p);
-		p = new Person();
-		p.setName("이철수");
-		p.setAddress("광주");
-		p.setAge(40);
-		list.add(p);
-		model.addAttribute("person", person);
-		model.addAttribute("list", list);
-		
-		return "jstl3Test";
-	}
+	/*
+	 * @RequestMapping(value = "/jstl3", method = RequestMethod.GET) public String
+	 * jstl3(Model model) { Person person = new Person(); person.setName("홍길동");
+	 * person.setAddress("서울"); person.setAge(20);
+	 * 
+	 * ArrayList<Person> list = new ArrayList<Person>(); Person p = new Person();
+	 * p.setName("김철수"); p.setAddress("부산"); p.setAge(30); list.add(p); p = new
+	 * Person(); p.setName("이철수"); p.setAddress("광주"); p.setAge(40); list.add(p);
+	 * model.addAttribute("person", person); model.addAttribute("list", list);
+	 * 
+	 * return "jstl3Test"; }
+	 */
 }

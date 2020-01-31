@@ -6,12 +6,24 @@
 	<insert id="writing" parameterType="VO">
 		insert into guestbook
 		(num,
-		name, password, contents)
+		name, password, contents )
 		values
 		(guestbook_seq.nextval,
-		#{userName},
-		#{userPw},
+		#{name},
+		#{password},
 		#{contents}
 		)
 	</insert>
+
+	<select id="reading" resultType="VO">
+		select num, name, password,
+		contents, to_char(inputdate, 'YY/MM/DD') inputdate from guestbook
+		order by num desc
+	</select>
+
+	<delete id="deleting" parameterType="map">
+		delete from guestbook
+		where
+		num=#{num} and password=#{password}
+	</delete>
 </mapper>

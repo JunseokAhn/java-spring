@@ -27,9 +27,9 @@
 			내용
 		</div>
 		<div class="second">
-			<input type="text" name="userName">
+			<input type="text" name="name">
 			<br>
-			<input type="text" name="userPw">
+			<input type="text" name="password">
 			<br>
 			<textarea rows="15px" cols="100px" style="resize: none;"
 				name="contents"></textarea>

@@ -10,10 +10,10 @@
 	<h2>[방명록]</h2>
 	<a href="writing">글쓰기</a>
 	<input type="button" value="글쓰기" onclick="writing()">
-	<c:if test="${list==null }">
+	<c:if test="${list.size()==0 }">
 		<p>등록된 방명록이 없습니다.</p>
 	</c:if>
-	<c:if test="${list!=null }">
+	<c:if test="${list.size()>0 }">
 		<c:forEach var="i" items="${list }">
 			<hr>
 			<p>작성자 :${i.name }</p>

@@ -25,7 +25,7 @@ public class GuestController {
 	public String guestBook(Model model) {
 		ArrayList<VO> list = dao.reading();
 		model.addAttribute("list", list);
-
+		
 		return "guestBook";
 	}
 

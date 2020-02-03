@@ -1,6 +1,5 @@
 package global.sesoc.web3.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import global.sesoc.web3.dao.dao;
-import global.sesoc.web3.vo.VO;
+import global.sesoc.web3.vo.Member_VO;
 
 @Controller
 public class SignController {
@@ -27,11 +26,11 @@ public class SignController {
 		return "input";
 	}
 
-	@RequestMapping(value = "/input2", method = RequestMethod.POST)
-	public String goInput2(String name, int age, String address) {
+	@RequestMapping(value = "/input", method = RequestMethod.POST)
+	public String goInput2(String id, String password, String name, String phone, String address, String email) {
 
-		logger.debug("이름 {} 나이 {} 주소 {}", name, age, address);
-		VO vo = new VO(name, age, address);
+		logger.debug("아이디 {} 비번 {}이름 {} 폰 {} 주소 {} 메일{}", id, password, name, phone, address, email);
+		Member_VO vo = new Member_VO(id, password, name, phone, address, email);
 		dao.input(vo);
 		return "redirect:/";
 	}
@@ -43,16 +42,20 @@ public class SignController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login2(HttpSession session, RedirectAttributes ra, String name, int age, String address) {
+	public String login2(HttpSession session, RedirectAttributes ra, String id, String password, String name,
+			String phone, String address, String email) {
 
-		logger.debug("이름 {} 나이 {} 주소 {}", name, age, address);
-		VO vo = new VO(name, age, address);
-		VO vo2 = dao.login(vo);
+		logger.debug("아이디 {} 비번 {}이름 {} 폰 {} 주소 {} 메일{}", id, password, name, phone, address, email);
+		Member_VO vo = new Member_VO(id, password, name, phone, address, email);
+		Member_VO vo2 = dao.login(vo);
 		if (vo.equals(vo2)) {
 			ra.addAttribute("login", "로그인 성공");
+			session.setAttribute("id", id);
+			session.setAttribute("password", password);
 			session.setAttribute("name", name);
-			session.setAttribute("age", age);
+			session.setAttribute("phone", phone);
 			session.setAttribute("address", address);
+			session.setAttribute("email", email);
 		} else
 			ra.addAttribute("login", "로그인 실패");
 
@@ -64,5 +67,5 @@ public class SignController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 }

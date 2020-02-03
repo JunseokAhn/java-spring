@@ -10,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import global.sesoc.web3.dao.dao;
-import global.sesoc.web3.vo.VO;
+import global.sesoc.web3.vo.Member_VO;
+
 
 @Controller
 public class AdminController {
@@ -29,7 +30,7 @@ public class AdminController {
 	@RequestMapping(value = "/searchAll", method = RequestMethod.GET)
 	public String searchAll(Model model) {
 
-		ArrayList<VO> list = dao.searchAll();
+		ArrayList<Member_VO> list = dao.searchAll();
 		model.addAttribute("list", list);
 
 		return "search2";

@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import global.sesoc.web3.vo.VO;
+import global.sesoc.web3.vo.Member_VO;
 
 @Repository
 public class dao {
@@ -14,7 +14,7 @@ public class dao {
 	@Autowired
 	private SqlSession session;
 
-	public VO input(VO vo) {
+	public Member_VO input(Member_VO vo) {
 		// TODO Auto-generated method stub
 
 		mapper mapper = session.getMapper(mapper.class);
@@ -24,20 +24,20 @@ public class dao {
 		return vo;
 	}
 
-	public VO login(VO vo) {
+	public Member_VO login(Member_VO vo) {
 		// TODO Auto-generated method stub
 
 		mapper mapper = session.getMapper(mapper.class);
-		VO res = mapper.search(vo);
+		Member_VO res = mapper.search(vo);
 
 		return res;
 	}
 
-	public ArrayList<VO> searchAll() {
+	public ArrayList<Member_VO> searchAll() {
 		// TODO Auto-generated method stub
 		
 		mapper mapper = session.getMapper(mapper.class);
-		ArrayList<VO> list = mapper.searchAll();
+		ArrayList<Member_VO> list = mapper.searchAll();
 		
 		return list;
 	}

@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="global.sesoc.web3.vo.VO" alias="VO"/>
+		<typeAlias type="global.sesoc.web3.vo.Member_VO" alias="Member" />
+		<typeAlias type="global.sesoc.web3.vo.Board_VO" alias="Board" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/mapper.xml" />

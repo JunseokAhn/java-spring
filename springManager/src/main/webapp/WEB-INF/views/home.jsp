@@ -6,23 +6,31 @@
 <title>Home</title>
 </head>
 <body>
+	<h1>SE Bank Step</h1>
 	<c:if test="${login.length>0}">
 	 ${login}
 </c:if>
 	<c:if test="${sessionScope.name==null }">
-		<a href="input">회원가입</a>
-		<a href="login">로그인</a>
-		<a href="admin">관리자메뉴</a>
+		<ul>
+			<li><a href="input">회원가입</a></li>
+			<li><a href="login">로그인</a></li>
+			<li><a href="admin">관리자메뉴</a></li>
+		</ul>
+
+
 	</c:if>
 	<c:if test="${sessionScope.name!=null }">
-		<a href="logout">로그아웃</a>
-		<a href="search">정보조회</a>
-		<a href="">글쓰기</a>
+		<div>${sessionScope.name}(${sessionScope.id})님로그인중</div>
+		<ul>
+			<li><a href="logout">로그아웃</a></li>
+			<li><a href="search">정보조회, 수정</a></li>
+			<li><a href="board">게시판</a></li>
+		</ul>
 	</c:if>
 	<hr>
-	
+
 	<script type="text/javascript">
-	
+		
 	</script>
 </body>
 </html>

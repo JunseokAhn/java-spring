@@ -36,14 +36,14 @@
 					<td>${i.address }</td>
 					<td><a href="delete?name=${i.name}">삭제</a></td>
 					<td><input type="button" value="삭제버튼"
-							onclick="delete('${i.name}')"></td>
+							onclick="deleting('${i.name}')"></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</c:if>
 	<script type="text/javascript">
-	function delete(name){
-		location.href = 'delete?name='+name;
+	function deleting(name){
+		location.href = 'deleting?name='+name;
 	}
 	</script>
 </body>

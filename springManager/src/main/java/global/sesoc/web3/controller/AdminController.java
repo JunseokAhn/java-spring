@@ -36,7 +36,7 @@ public class AdminController {
 		return "search2";
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleting", method = RequestMethod.GET)
 	public String delete(String name) {
 
 		boolean res = dao.delete(name);

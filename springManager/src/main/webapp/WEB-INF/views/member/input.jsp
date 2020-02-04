@@ -19,12 +19,13 @@
 <body>
 	<div style="text-align: center;">
 		<h1>회원가입</h1>
-		<form action="input" method="post" onsubmit="signUp()">
+		<form action="input" method="post" onsubmit="return signUp();">
 			<table style="margin: 0 auto;">
 				<tr>
 					<td class="td1">ID</td>
 					<td class="td2">
-						<input id="userId" name="id" type="text" placeholder="ID중복확인 이용">
+						<input id="userId" name="id" type="text" placeholder="ID중복확인 이용"
+							readonly>
 						<input type="button" value="ID중복확인" onclick="doubleCheck(userId)">
 					</td>
 				</tr>
@@ -62,32 +63,41 @@
 				<tr>
 					<td class="td1">휴대폰 번호</td>
 					<td class="td2">
-						<select name="phone1">
+						<select id="Phone1" name="Phone1">
 							<option value="010">010</option>
 							<option value="011">011</option>
 							<option value="019">019</option>
-						</select>
-						<input id="userPhone2">
-						<input id="userPhone3">
+						</select>-
+						<input id="Phone2" name="Phone2">
+						-
+						<input id="Phone3" name="Phone3">
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="가입" onclick="signUp()">
+			<input type="hidden" id="phone" name="phone">
+			<input type="submit" value="가입">
 			<input type="button" value="다시 쓰기" onclick="redoing()">
 		</form>
-
-		<script type="text/javascript">
-			function doubleCheck(userId) {
-
-			}
-			function signUp() {
-
-				return true;
-			}
-			function redoing() {
-
-			}
-		</script>
 	</div>
+	<script type="text/javascript">
+		function doubleCheck(userId) {
+
+			window.open('doubleCheck', 'hello',
+					'top=200, width=400, height=150, resizable=no');
+		}
+		function signUp() {
+			var phone1 = document.getElementById('Phone1').value
+			var phone2 = document.getElementById('Phone2').value
+			var phone3 = document.getElementById('Phone3').value
+			var phone = document.getElementById('phone')
+			phone.value = phone1 + '-' + phone2 + '-' + phone3
+
+			return true;
+		}
+
+		function redoing() {
+
+		}
+	</script>
 </body>
 </html>

@@ -3,16 +3,17 @@
 <mapper namespace="global.sesoc.web3.dao.mapper">
 	<insert id="input" parameterType="Member">
 		insert into web5_member
-		(id, password, name, phone,
+		(id,
+		password, name, phone,
 		address, email)
 		values
 		(#{id},#{password},#{name}, #{phone}, #{address},#{email})
 	</insert>
 
-	<select id="search" parameterType="Member" resultType="Member">
+	<select id="search" parameterType="String" resultType="Member">
 		select *
 		from web5_member
-		where name like #{name}
+		where id like #{id}
 	</select>
 
 	<select id="searchAll" resultType="Member">
@@ -22,6 +23,7 @@
 
 	<delete id="delete" parameterType="String">
 		delete from web5_member
-		where name = #{name}
+		where
+		name = #{name}
 	</delete>
 </mapper>

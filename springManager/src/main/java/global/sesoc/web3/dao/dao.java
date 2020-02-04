@@ -24,14 +24,6 @@ public class dao {
 		return vo;
 	}
 
-	public Member_VO login(Member_VO vo) {
-		// TODO Auto-generated method stub
-
-		mapper mapper = session.getMapper(mapper.class);
-		Member_VO res = mapper.search(vo);
-
-		return res;
-	}
 
 	public ArrayList<Member_VO> searchAll() {
 		// TODO Auto-generated method stub
@@ -48,6 +40,13 @@ public class dao {
 		int res = mapper.delete(name);
 		
 		return res>0;
+	}
+
+	public Member_VO search(String doubleCheck) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		Member_VO vo = mapper.search(doubleCheck);
+		return vo;
 	}
 
 }

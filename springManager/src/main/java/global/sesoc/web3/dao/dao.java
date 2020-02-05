@@ -49,4 +49,12 @@ public class dao {
 		return vo;
 	}
 
+
+	public boolean updating(Member_VO vo) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		int res = mapper.updating(vo);
+		return res>0;
+	}
+
 }

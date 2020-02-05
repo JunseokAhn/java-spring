@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div style="text-align: center;">
-		<h1>회원가입</h1>
+		<h1>로그인</h1>
 		<form action="login" method="post">
 			<table style="margin: 0 auto;">
 				<tr>
@@ -39,5 +39,15 @@
 			<input type="button" value="다시 쓰기" onclick="redoing()">
 		</form>
 	</div>
+	<script type="text/javascript">
+		function redoing() {
+			var userId = document.getElementById('userId')
+			var userPw = document.getElementById('userPw')
+
+			userId.value = '';
+			userPw.value = '';
+
+		}
+	</script>
 </body>
 </html>

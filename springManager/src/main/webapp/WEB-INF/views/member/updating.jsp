@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>íšŒì›ê°€ì…</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 <style type="text/css">
 .td1 {
 	background-color: rgb(153, 153, 153);
@@ -18,56 +18,53 @@
 </head>
 <body>
 	<div style="text-align: center;">
-		<h1>íšŒì›ê°€ì…</h1>
-		<form action="input" method="post" onsubmit="return signUp();">
+		<h1>Á¤º¸Á¶È¸, ¼öÁ¤</h1>
+		<form action="updating" method="post" onsubmit="return updating()">
 			<table style="margin: 0 auto;">
 				<tr>
 					<td class="td1">ID</td>
 					<td class="td2">
-						<input id="userId" name="id" type="text" placeholder="IDì¤‘ë³µí™•ì¸ ì´ìš©"
-							readonly>
-						<input type="button" value="IDì¤‘ë³µí™•ì¸" onclick="doubleCheck(userId)">
+						<input id="userId" name="id" type="text" disabled
+							placeholder="${sessionScope.id}">
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">ë¹„ë°€ë²ˆí˜¸</td>
+					<td class="td1">ºñ¹Ğ¹øÈ£</td>
 					<td class="td2">
 						<input id="userPw" name="password" type="password"
-							placeholder="ë¹„ë°€ë²ˆí˜¸ ì…ë ¥">
+							placeholder="${sessionScope.password}">
 						<br>
 						<input id="userPw2" name="password2" type="password"
-							placeholder="ë¹„ë°€ë²ˆí˜¸ ë‹¤ì‹œ ì…ë ¥">
+							placeholder="º¯°æÇÒ ºñ¹Ğ¹øÈ£ ´Ù½ÃÀÔ·Â">
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">ì´ë¦„</td>
+					<td class="td1">ÀÌ¸§</td>
 					<td class="td2">
-						<input id="userName" name="name" type="text" placeholder="ì´ë¦„ ì…ë ¥">
+						<input id="userName" name="name" type="text"
+							placeholder="${sessionScope.name }">
 					</td>
 				</tr>
 				<tr>
 				<tr>
-					<td class="td1">ì´ë©”ì¼</td>
+					<td class="td1">ÀÌ¸ŞÀÏ</td>
 					<td class="td2">
 						<input id="userEmail" name="email" type="text"
-							placeholder="ì´ë©”ì¼ ì…ë ¥">
+							placeholder="${sessionScope.email }">
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">ì£¼ì†Œ</td>
+					<td class="td1">ÁÖ¼Ò</td>
 					<td class="td2">
 						<input id="userAddress" name="address" type="text"
-							placeholder="ì£¼ì†Œ ì…ë ¥" style="width: 97%">
+							placeholder="${sessionScope.address }" style="width: 97%">
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">íœ´ëŒ€í° ë²ˆí˜¸</td>
+					<td class="td1">ÈŞ´ëÆù ¹øÈ£</td>
 					<td class="td2">
-						<select id="Phone1" name="Phone1">
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="019">019</option>
-						</select>-
+						<input id="Phone1" name="Phone1">
+						-
 						<input id="Phone2" name="Phone2">
 						-
 						<input id="Phone3" name="Phone3">
@@ -75,26 +72,33 @@
 				</tr>
 			</table>
 			<input type="hidden" id="phone" name="phone">
-			<input type="submit" value="ê°€ì…">
-			<input type="button" value="ë‹¤ì‹œ ì“°ê¸°" onclick="redoing()">
+			<input type="submit" value="¼öÁ¤">
+			<input type="button" value="´Ù½Ã ¾²±â" onclick="redoing()">
 		</form>
 	</div>
 	<script type="text/javascript">
-		function doubleCheck(userId) {
+		var phone = '${sessionScope.phone}'
+		var doc1 = document.getElementById("Phone1");
+		var doc2 = document.getElementById("Phone2");
+		var doc3 = document.getElementById("Phone3");
 
-			window.open('doubleCheck', 'hello',
-					'top=200, width=400, height=150, resizable=no');
-		}
-		function signUp() {
+		var phoneNum = phone.split('-')
+
+		doc1.placeholder = phoneNum[0];
+		doc2.placeholder = phoneNum[1];
+		doc3.placeholder = phoneNum[2];
+		
+		function updating(){
 			var phone1 = document.getElementById('Phone1').value
 			var phone2 = document.getElementById('Phone2').value
 			var phone3 = document.getElementById('Phone3').value
 			var phone = document.getElementById('phone')
-			phone.value = phone1 + '-' + phone2 + '-' + phone3
+		
+			phone.value = phone1 +'-'+ phone2 +'-'+ phone3 
 
 			return true;
 		}
-
+		
 		function redoing(){
 			var userId = document.getElementById('userId')
 			var userPw =  document.getElementById('userPw')

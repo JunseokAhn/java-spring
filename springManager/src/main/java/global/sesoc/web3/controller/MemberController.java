@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -64,7 +66,7 @@ public class MemberController {
 
 		logger.debug("아이디 {} 비번 {}", id, password);
 		Member_VO vo = dao.search(id);
-		
+
 		if ((vo != null) && (vo.getPassword().equals(password))) {
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("password", vo.getPassword());
@@ -101,5 +103,26 @@ public class MemberController {
 		}
 
 		return "member/doubleCheck";
+	}
+
+	@GetMapping(value = "updating")
+	public String update() {
+
+		return "member/updating";
+	}
+
+	@PostMapping(value = "updating")
+	public String update2(Member_VO vo, Model model, HttpSession session) {
+		vo.setId((String) session.getAttribute("id"));
+		boolean res = dao.updating(vo);
+		
+		session.setAttribute("id", vo.getId());
+		session.setAttribute("password", vo.getPassword());
+		session.setAttribute("name", vo.getName());
+		session.setAttribute("phone", vo.getPhone());
+		session.setAttribute("address", vo.getAddress());
+		session.setAttribute("email", vo.getAddress());
+		
+		return "redirect:/member/updating";
 	}
 }

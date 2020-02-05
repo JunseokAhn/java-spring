@@ -13,4 +13,6 @@ public interface mapper {
 	public ArrayList<Member_VO> searchAll();
 
 	public int delete(String name);
+
+	public int updating(Member_VO vo);
 }

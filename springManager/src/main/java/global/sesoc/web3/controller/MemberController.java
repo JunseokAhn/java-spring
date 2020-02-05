@@ -112,8 +112,15 @@ public class MemberController {
 	}
 
 	@PostMapping(value = "updating")
-	public String update2(Member_VO vo, Model model, HttpSession session) {
+	public String update2(Member_VO vo, Model model, HttpSession session, String password2) {
 		vo.setId((String) session.getAttribute("id"));
+		String password = (String) session.getAttribute("password");
+		if(!password.equals(vo.getPassword())) {
+			//비밀번호 불일치
+			System.out.println("비밀번호 불 일치!");
+			return "redirect:/member/updating";
+		}
+		vo.setPassword(password2);
 		boolean res = dao.updating(vo);
 		
 		session.setAttribute("id", vo.getId());

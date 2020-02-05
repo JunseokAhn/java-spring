@@ -31,6 +31,6 @@
 		update web5_member
 		set password = #{password}, name=#{name}, phone=#{phone},
 		address=#{address}, email=#{email}
-		where id = #{id}
+		where id like #{id}
 	</update>
 </mapper>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div style="text-align: center;">
-		<h1>Á¤º¸Á¶È¸, ¼öÁ¤</h1>
+		<h1>ì •ë³´ì¡°íšŒ, ìˆ˜ì •</h1>
 		<form action="updating" method="post" onsubmit="return updating()">
 			<table style="margin: 0 auto;">
 				<tr>
@@ -29,17 +29,17 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">ºñ¹Ğ¹øÈ£</td>
+					<td class="td1">ë¹„ë°€ë²ˆí˜¸</td>
 					<td class="td2">
 						<input id="userPw" name="password" type="password"
-							placeholder="${sessionScope.password}">
+							placeholder="ì›ë˜ ë¹„ë°€ë²ˆí˜¸ ì…ë ¥">
 						<br>
 						<input id="userPw2" name="password2" type="password"
-							placeholder="º¯°æÇÒ ºñ¹Ğ¹øÈ£ ´Ù½ÃÀÔ·Â">
+							placeholder="ë³€ê²½í•  ë¹„ë°€ë²ˆí˜¸ ì…ë ¥">
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">ÀÌ¸§</td>
+					<td class="td1">ì´ë¦„</td>
 					<td class="td2">
 						<input id="userName" name="name" type="text"
 							placeholder="${sessionScope.name }">
@@ -47,21 +47,21 @@
 				</tr>
 				<tr>
 				<tr>
-					<td class="td1">ÀÌ¸ŞÀÏ</td>
+					<td class="td1">ì´ë©”ì¼</td>
 					<td class="td2">
 						<input id="userEmail" name="email" type="text"
 							placeholder="${sessionScope.email }">
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">ÁÖ¼Ò</td>
+					<td class="td1">ì£¼ì†Œ</td>
 					<td class="td2">
 						<input id="userAddress" name="address" type="text"
 							placeholder="${sessionScope.address }" style="width: 97%">
 					</td>
 				</tr>
 				<tr>
-					<td class="td1">ÈŞ´ëÆù ¹øÈ£</td>
+					<td class="td1">íœ´ëŒ€í° ë²ˆí˜¸</td>
 					<td class="td2">
 						<input id="Phone1" name="Phone1">
 						-
@@ -72,8 +72,8 @@
 				</tr>
 			</table>
 			<input type="hidden" id="phone" name="phone">
-			<input type="submit" value="¼öÁ¤">
-			<input type="button" value="´Ù½Ã ¾²±â" onclick="redoing()">
+			<input type="submit" value="ìˆ˜ì •">
+			<input type="button" value="ë‹¤ì‹œ ì“°ê¸°" onclick="redoing()">
 		</form>
 	</div>
 	<script type="text/javascript">
@@ -95,7 +95,12 @@
 			var phone = document.getElementById('phone')
 		
 			phone.value = phone1 +'-'+ phone2 +'-'+ phone3 
-
+			var userPw = document.getElementById('userPw').value
+			 if(${sessionScope.password}!=userPw){ 
+				/* if(!${sessionScope.password}.equals(userPw)){ */
+				alert('ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜')
+				return false;
+			}
 			return true;
 		}
 		

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -10,15 +10,15 @@
 <body>
 	<form action="" method="post">
 		<input type="text" id="doubleCheck" name="doubleCheck"
-			placeholder="ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä">
-		<input type="submit" value="Áßº¹°Ë»ç">
+			placeholder="IDë¥¼ ìž…ë ¥í•˜ì„¸ìš”">
+		<input type="submit" value="ì¤‘ë³µê²€ì‚¬">
 		<hr>
 		<c:if test="${requestScope.result.equals('null')}">
-			${requestScope.id} ´Â »ç¿ë°¡´ÉÇÕ´Ï´Ù.
-				<input type="button" value="ID»ç¿ëÇÏ±â"	onclick="closing()">
+			${requestScope.id} ëŠ” ì‚¬ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.
+				<input type="button" value="IDì‚¬ìš©í•˜ê¸°"	onclick="closing()">
 		</c:if>
 		<c:if test="${requestScope.result.equals('exist')}">
-			${requestScope.id} ´Â »ç¿ëºÒ°¡´ÉÇÕ´Ï´Ù.
+			${requestScope.id} ëŠ” ì‚¬ìš©ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.
 		
 		</c:if>
 	</form>

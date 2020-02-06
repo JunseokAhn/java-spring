@@ -1,1 +1,18 @@
 @charset "UTF-8";
+.set_table
+{
+	margin:0px auto;
+}
+.td1 {
+	background-color: rgb(153, 153, 153);
+}
+
+.td2 {
+	background-color: rgb(202, 202, 202);
+	text-align: left;
+}
+
+.divCenter {
+	text-align: center; 
+}
+

@@ -29,8 +29,32 @@
 
 	<update id="updating" parameterType="Member">
 		update web5_member
-		set password = #{password}, name=#{name}, phone=#{phone},
+		set
+		password = #{password}, name=#{name}, phone=#{phone},
 		address=#{address}, email=#{email}
 		where id like #{id}
 	</update>
+
+	<insert id="boardWrite" parameterType="Board">
+		insert into web5_board
+		(boardnum, id, title, contents)
+		values
+		(web5_board_seq.nextval, #{id},
+		#{title}, #{contents})
+	</insert>
+
+	<select id="selectBoardList" resultType="Board">
+		select boardnum, id,
+		title, contents, to_char(inputdate,'YYYY-MM-DD') inputdate,
+		hits,
+		originalfile, savedfile from web5_board
+	</select>
+	<update id="boardHits" parameterType="String">
+		update web5_board set hits
+		= hits+1 where boardnum like #{boardnum}
+	</update>
+	<select id="boardSearch" parameterType="String"
+		resultType="Board">
+		select * from web5_board where boardnum=#{boardnum}
+	</select>
 </mapper>

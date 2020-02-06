@@ -1,23 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<style type="text/css">
-.td1 {
-	background-color: rgb(153, 153, 153);
-}
 
-.td2 {
-	background-color: rgb(202, 202, 202);
-	text-align: left;
-}
-</style>
+<link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet">
+
 </head>
 <body>
-	<div style="text-align: center;">
+	<div class="divCenter">
 		<h1>회원가입</h1>
 		<form action="input" method="post" onsubmit="return signUp();">
 			<table style="margin: 0 auto;">
@@ -95,16 +89,16 @@
 			return true;
 		}
 
-		function redoing(){
+		function redoing() {
 			var userId = document.getElementById('userId')
-			var userPw =  document.getElementById('userPw')
+			var userPw = document.getElementById('userPw')
 			var userPw2 = document.getElementById('userPw2')
 			var userName = document.getElementById('userName')
 			var userEmail = document.getElementById('userEmail')
 			var userAddress = document.getElementById('userAddress')
 			var Phone1 = document.getElementById('Phone1')
 			var Phone2 = document.getElementById('Phone2')
-			var Phone3= document.getElementById('Phone3')
+			var Phone3 = document.getElementById('Phone3')
 			userId.value = '';
 			userPw.value = '';
 			userPw2.value = '';

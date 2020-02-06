@@ -25,7 +25,7 @@
 			<li><a href="member/logout">로그아웃</a></li>
 			<li><a href="<c:url value='/member/logout' />">로그아웃</a></li>
 			<li><a href="<c:url value="/member/updating"/>">정보조회, 수정</a></li>
-			<li><a href="board">게시판</a></li>
+			<li><a href="<c:url value="/board/boardList" />">게시판</a></li>
 
 		</ul>
 	</c:if>

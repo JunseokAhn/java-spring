@@ -12,11 +12,13 @@
 <body>
 	<div class="divCenter">
 		<h1>[게시판]</h1>
-		<p>
-			전체 : ${listSize }
-			<input type="button" value="글쓰기" onclick="goWriteForm()">
-		</p>
+		<span style="float: left;"> 전체 : ${listSize } </span>
+		<input type="button" style="float: right;" value="글쓰기"
+			onclick="goWriteForm()">
+		<br>
+		<hr>
 		<table class="set_table">
+
 			<tr>
 				<td class="td1" width="80">번호</td>
 				<td class="td1" width="300;">제목</td>
@@ -27,9 +29,10 @@
 			<c:forEach var="i" items="${list }">
 				<tr>
 					<td class="td2" style="text-align: center;">${i.boardnum }</td>
-					<td class="td2" class="title">
-						 <a href="boardSearch?boardnum=${i.boardnum }"> ${i.title }</a>
-					</td>
+					<td class="td2" class="title"
+						onclick="location.href= 'boardSearch?boardnum=${i.boardnum }'"
+						onmouseover="this.style.color='blue';"
+						onmouseout="this.style.color='black';" style="cursor: pointer;">${i.title }</td>
 					<td class="td2" style="text-align: center;">${i.id }</td>
 					<td class="td2" style="text-align: center;">${i.hits }</td>
 					<td class="td2" style="text-align: center;">${i.inputdate }</td>

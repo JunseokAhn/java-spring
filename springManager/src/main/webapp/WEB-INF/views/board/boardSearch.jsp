@@ -55,7 +55,7 @@
 			
 		}
 		function goBoardList() {
-
+			location.href="boardList"
 		}
 	</script>
 </body>

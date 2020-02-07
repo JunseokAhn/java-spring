@@ -12,11 +12,11 @@
 </head>
 <body>
 	<h1>[글쓰기]</h1>
-	<div >
+	<div>
 		<form action="boardWrite" method="post">
 			<table>
 				<tr>
-					<td class="td1" >제목</td>
+					<td class="td1">제목</td>
 					<td class="td2">
 						<input id="title" name="title">
 					</td>
@@ -39,7 +39,13 @@
 				</tr>
 			</table>
 			<input type="submit" value="저장">
+			<input type="button" value="목록으로" onclick="goBoardList()">
 		</form>
 	</div>
+	<script type="text/javascript">
+		function goBoardList() {
+			location.href = "boardList"
+		}
+	</script>
 </body>
 </html>

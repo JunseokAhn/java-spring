@@ -1,8 +1,9 @@
 @charset "UTF-8";
-.set_table
-{
-	margin:0px auto;
+
+.set_table {
+	margin: 0px auto;
 }
+
 .td1 {
 	background-color: rgb(199, 199, 199);
 }
@@ -13,15 +14,29 @@
 }
 
 .divCenter {
-	text-align: center; 
-	
+	text-align: center;
 }
 
-.divIn{
+.divIn {
 	display: inline-block;
+	background-color: rgba(255, 255, 255, 0.9);
 }
+
+.divWhite {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
 #contents {
 	width: 97%;
 	height: 97%;
 	text-align: left;
+}
+
+.mainLogo {
+	
+}
+
+body {
+	background-image: url("../img/back.png");
+	background-color: rgb(245, 245, 200);
 }

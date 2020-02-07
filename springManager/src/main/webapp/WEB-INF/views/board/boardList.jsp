@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
 	<div class="divCenter">
 		<div class="divIn" style="width: 55%;">
 			<h1>[게시판]</h1>

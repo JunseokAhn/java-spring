@@ -1,79 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<style type="text/css">
-.td1 {
-	background-color: rgb(153, 153, 153);
-}
+<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 
-.td2 {
-	background-color: rgb(202, 202, 202);
-	text-align: left;
-}
-</style>
 </head>
 <body>
-	<div style="text-align: center;">
+	<div style="text-align: center;" class="divWhite">
 		<h1>정보조회, 수정</h1>
 		<form action="updating" method="post" onsubmit="return updating()">
 			<table style="margin: 0 auto;">
 				<tr>
 					<td class="td1">ID</td>
-					<td class="td2">
-						<input id="userId" name="id" type="text" disabled
-							placeholder="${sessionScope.id}">
-					</td>
+					<td class="td2"><input id="userId" name="id" type="text"
+						disabled placeholder="${sessionScope.id}"></td>
 				</tr>
 				<tr>
 					<td class="td1">비밀번호</td>
-					<td class="td2">
-						<input id="userPw" name="password" type="password"
-							placeholder="원래 비밀번호 입력">
-						<br>
-						<input id="userPw2" name="password2" type="password"
-							placeholder="변경할 비밀번호 입력">
-					</td>
+					<td class="td2"><input id="userPw" name="password"
+						type="password" placeholder="원래 비밀번호 입력"> <br> <input
+						id="userPw2" name="password2" type="password"
+						placeholder="변경할 비밀번호 입력"></td>
 				</tr>
 				<tr>
 					<td class="td1">이름</td>
-					<td class="td2">
-						<input id="userName" name="name" type="text"
-							placeholder="${sessionScope.name }">
-					</td>
+					<td class="td2"><input id="userName" name="name" type="text"
+						placeholder="${sessionScope.name }"></td>
 				</tr>
 				<tr>
 				<tr>
 					<td class="td1">이메일</td>
-					<td class="td2">
-						<input id="userEmail" name="email" type="text"
-							placeholder="${sessionScope.email }">
-					</td>
+					<td class="td2"><input id="userEmail" name="email" type="text"
+						placeholder="${sessionScope.email }"></td>
 				</tr>
 				<tr>
 					<td class="td1">주소</td>
-					<td class="td2">
-						<input id="userAddress" name="address" type="text"
-							placeholder="${sessionScope.address }" style="width: 97%">
-					</td>
+					<td class="td2"><input id="userAddress" name="address"
+						type="text" placeholder="${sessionScope.address }"
+						style="width: 97%"></td>
 				</tr>
 				<tr>
 					<td class="td1">휴대폰 번호</td>
-					<td class="td2">
-						<input id="Phone1" name="Phone1">
-						-
-						<input id="Phone2" name="Phone2">
-						-
-						<input id="Phone3" name="Phone3">
-					</td>
+					<td class="td2"><input id="Phone1" name="Phone1"> - <input
+						id="Phone2" name="Phone2"> - <input id="Phone3"
+						name="Phone3"></td>
 				</tr>
 			</table>
-			<input type="hidden" id="phone" name="phone">
-			<input type="submit" value="수정">
-			<input type="button" value="다시 쓰기" onclick="redoing()">
+			<input type="hidden" id="phone" name="phone"> <input
+				type="submit" value="수정"> <input type="button" value="다시 쓰기"
+				onclick="redoing()">
 		</form>
 	</div>
 	<script type="text/javascript">

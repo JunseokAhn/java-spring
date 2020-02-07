@@ -53,8 +53,14 @@
 		update web5_board set hits
 		= hits+1 where boardnum like #{boardnum}
 	</update>
+	
 	<select id="boardSearch" parameterType="String"
 		resultType="Board">
 		select * from web5_board where boardnum=#{boardnum}
 	</select>
+	
+	<delete id="boardDelete" parameterType="String">
+		delete from web5_board where boardnum = #{boardnum}
+	</delete>
+	
 </mapper>

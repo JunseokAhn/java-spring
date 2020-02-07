@@ -15,29 +15,48 @@
 		<table class="set_table">
 			<tr>
 				<td class="td1">작성자</td>
-				<td class="td2" width="500">${id}</td>
+				<td class="td2" width="500">${vo.id}</td>
 			</tr>
 			<tr>
 				<td class="td1">작성일</td>
-				<td class="td2">${inputdate }</td>
+				<td class="td2">${vo.inputdate }</td>
 			</tr>
 			<tr>
 				<td class="td1">조회수</td>
-				<td class="td2">${hits }</td>
+				<td class="td2">${vo.hits }</td>
 			</tr>
 			<tr>
 				<td class="td1">제목</td>
-				<td class="td2">${title }</td>
+				<td class="td2">${vo.title }</td>
 			</tr>
 			<tr>
 				<td class="td1">내용</td>
-				<td class="td2">${contents }</td>
+				<td class="td2">${vo.contents }</td>
 			</tr>
 			<tr>
 				<td class="td1">파일첨부</td>
 				<td class="td2"></td>
 			</tr>
 		</table>
+		<c:if test="${vo.id==sessionScope.id }">
+			<input type="button" value="삭제" onclick="boardDelete()">
+			<input type="button" value="수정" onclick="boardUpdate()">
+			<input type="button" value="목록으로" onclick="goBoardList()">
+		</c:if>
+		<c:if test="${vo.id!=sessionScope.id }">
+			<input type="button" value="목록으로" onclick="goBoardList()">
+		</c:if>
 	</div>
+	<script type="text/javascript">
+		function boardDelete(boardnum) {
+			location.href = "boardDelete?boardnum=${vo.boardnum}&id=${vo.id}";
+		}
+		function boardUpdate() {
+			
+		}
+		function goBoardList() {
+
+		}
+	</script>
 </body>
 </html>

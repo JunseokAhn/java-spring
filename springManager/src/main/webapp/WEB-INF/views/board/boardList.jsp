@@ -28,7 +28,7 @@
 				<tr>
 					<td class="td2" style="text-align: center;">${i.boardnum }</td>
 					<td class="td2" class="title">
-						<a href="boardSearch?boardnum=${i.boardnum }"> ${i.title }</a>
+						 <a href="boardSearch?boardnum=${i.boardnum }"> ${i.title }</a>
 					</td>
 					<td class="td2" style="text-align: center;">${i.id }</td>
 					<td class="td2" style="text-align: center;">${i.hits }</td>

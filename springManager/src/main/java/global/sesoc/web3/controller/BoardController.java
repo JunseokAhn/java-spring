@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ import global.sesoc.web3.vo.Board_VO;
 @Controller
 @RequestMapping("board")
 public class BoardController {
+
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	@Autowired
 	dao dao;
@@ -53,9 +57,23 @@ public class BoardController {
 
 	@GetMapping(value = "boardSearch")
 	public String boardSearch(String boardnum, Model model) {
-		
+
 		Board_VO vo = dao.boardSearch(boardnum);
+
 		model.addAttribute("vo", vo);
 		return "board/boardSearch";
+	}
+
+	@GetMapping(value = "boardDelete")
+	public String boardDelete(String boardnum, String id, HttpSession session) {
+
+		String realId =(String) session.getAttribute("id");
+		if (id.equals(realId)) {
+			logger.debug("아이디 확인");
+			boolean res = dao.boardDelete(boardnum);
+
+		}
+
+		return "redirect:/board/boardList";
 	}
 }

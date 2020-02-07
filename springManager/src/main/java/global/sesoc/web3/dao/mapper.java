@@ -24,4 +24,6 @@ public interface mapper {
 	public Board_VO boardSearch(String boardnum);
 
 	public void boardHits(String boardnum);
+
+	public int boardDelete(String boardnum);
 }

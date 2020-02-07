@@ -89,4 +89,11 @@ public class dao {
 		return res>0;
 	}
 
+	public boolean boardUpdate(Board_VO vo) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		mapper.boardUpdate(vo);
+		return true;
+	}
+
 }

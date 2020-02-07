@@ -63,4 +63,9 @@
 		delete from web5_board where boardnum = #{boardnum}
 	</delete>
 	
+	<update id="boardUpdate" parameterType="Board">
+		update web5_board
+		set title = #{title}, contents = #{contents}, inputdate = default
+		where boardnum = #{boardnum}
+	</update>
 </mapper>

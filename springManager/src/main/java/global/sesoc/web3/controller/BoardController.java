@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -67,13 +68,37 @@ public class BoardController {
 	@GetMapping(value = "boardDelete")
 	public String boardDelete(String boardnum, String id, HttpSession session) {
 
-		String realId =(String) session.getAttribute("id");
+		String realId = (String) session.getAttribute("id");
 		if (id.equals(realId)) {
 			logger.debug("아이디 확인");
 			boolean res = dao.boardDelete(boardnum);
 
 		}
 
+		return "redirect:/board/boardList";
+	}
+
+	@GetMapping(value = "boardUpdate")
+	public String boardUpdate(String boardnum, String id, HttpSession session, Model model) {
+		String realId = (String) session.getAttribute("id");
+		if (realId.equals(id)) {
+			logger.debug("아이디 확인");
+			Board_VO vo = dao.boardSearch(boardnum);
+			model.addAttribute("vo", vo);
+		}
+
+		return "board/boardUpdate";
+	}
+
+	@PostMapping(value = "boardUpdate")
+	public String boardUpdate2(HttpSession session, Board_VO vo, Model model) {
+		String realId = (String) session.getAttribute("id");
+
+		if (realId.equals(vo.getId())) {
+			logger.debug("아이디 확인");
+			dao.boardUpdate(vo);
+		}
+	
 		return "redirect:/board/boardList";
 	}
 }

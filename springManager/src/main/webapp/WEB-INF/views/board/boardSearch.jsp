@@ -52,7 +52,7 @@
 			location.href = "boardDelete?boardnum=${vo.boardnum}&id=${vo.id}";
 		}
 		function boardUpdate() {
-			
+			location.href = "boardUpdate?boardnum=${vo.boardnum}&id=${vo.id}";
 		}
 		function goBoardList() {
 			location.href="boardList"

@@ -14,8 +14,12 @@
 
 .divCenter {
 	text-align: center; 
+	
 }
 
+.divIn{
+	display: inline-block;
+}
 #contents {
 	width: 97%;
 	height: 97%;

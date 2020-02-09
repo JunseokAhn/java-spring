@@ -36,6 +36,9 @@
 				<input type="hidden" id="boardnum" name="boardnum"
 					value="${vo.boardnum }">
 			</form>
+			<a href="<c:url value="/"/>"><img alt=""
+				src="
+			<c:url value="/resources/img/home.png"/>" class="goMain"></a>
 		</div>
 	</div>
 	<script type="text/javascript">

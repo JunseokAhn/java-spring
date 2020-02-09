@@ -49,6 +49,9 @@
 			</c:if>
 		</div>
 	</div>
+	<a href="<c:url value="/"/>"><img alt=""
+		src="
+			<c:url value="/resources/img/home.png"/>" class="goMain"></a>
 	<script type="text/javascript">
 		function boardDelete(boardnum) {
 			location.href = "boardDelete?boardnum=${vo.boardnum}&id=${vo.id}";

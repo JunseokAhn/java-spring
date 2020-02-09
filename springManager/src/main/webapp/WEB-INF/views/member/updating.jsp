@@ -55,6 +55,9 @@
 				onclick="redoing()">
 		</form>
 	</div>
+	<a href="<c:url value="/"/>"><img alt=""
+		src="
+			<c:url value="/resources/img/home.png"/>" class="goMain"></a>
 	<script type="text/javascript">
 		var phone = '${sessionScope.phone}'
 		var doc1 = document.getElementById("Phone1");

@@ -12,12 +12,16 @@
 <body>
 
 	<div class="divCenter">
-		<div class="divIn" style="width: 55%;">
+		<div class="divIn" style="width: 75%;">
 			<h1>[게시판]</h1>
 			<span style="float: left;"> 전체 : ${listSize } </span>
 			<input type="button" style="float: right;" value="글쓰기"
 				onclick="goWriteForm()">
 			<br>
+			<a href="<c:url value="/"/>"><img alt=""
+				src="
+			<c:url value="/resources/img/home.png"/>" class="goMain"></a>
+	
 			<hr>
 			<table class="set_table">
 

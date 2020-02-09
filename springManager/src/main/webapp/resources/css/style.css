@@ -40,3 +40,10 @@ body {
 	background-image: url("../img/back.png");
 	background-color: rgb(245, 245, 200);
 }
+
+.goMain {
+	position: absolute;
+	width: 50px;
+	top: 30px;
+	left: 135px;
+}

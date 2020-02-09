@@ -18,18 +18,21 @@
 				<tr>
 					<td class="td1">ID</td>
 					<td class="td2"><input id="userId" name="id" type="text"
-						placeholder="ID 입력"></td>
+							placeholder="ID 입력"></td>
 				</tr>
 				<tr>
 					<td class="td1">비밀번호</td>
 					<td class="td2"><input id="userPw" name="password"
-						type="password" placeholder="비밀번호 입력"></td>
+							type="password" placeholder="비밀번호 입력"></td>
 				</tr>
 			</table>
-			<input type="submit" value="로그인"> <input type="button"
-				value="다시 쓰기" onclick="redoing()">
+			<input type="submit" value="로그인">
+			<input type="button" value="다시 쓰기" onclick="redoing()">
 		</form>
 	</div>
+	<a href="<c:url value="/"/>"><img alt=""
+		src="
+			<c:url value="/resources/img/home.png"/>" class="goMain"></a>
 	<script type="text/javascript">
 		function redoing() {
 			var userId = document.getElementById('userId')

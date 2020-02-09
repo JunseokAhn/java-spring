@@ -27,7 +27,6 @@
 		<c:if test="${sessionScope.name!=null }">
 			<div>${sessionScope.name}(${sessionScope.id})님로그인중</div>
 			<ul style="margin: 0">
-				<li><a href="member/logout">로그아웃</a></li>
 				<li><a href="<c:url value='/member/logout' />">로그아웃</a></li>
 				<li><a href="<c:url value="/member/updating"/>">정보조회, 수정</a></li>
 				<li><a href="<c:url value="/board/boardList" />">게시판</a></li>

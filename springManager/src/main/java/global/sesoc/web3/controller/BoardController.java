@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import global.sesoc.web3.dao.dao;
+import global.sesoc.web3.util.FileService;
 import global.sesoc.web3.vo.Board_VO;
 
 @Controller
@@ -22,6 +24,8 @@ import global.sesoc.web3.vo.Board_VO;
 public class BoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+
+	final String uploadPath = "/boardfile";
 
 	@Autowired
 	dao dao;
@@ -44,9 +48,25 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "boardWrite", method = RequestMethod.POST)
-	public String boardWrite2(String title, String contents, HttpSession session, Model model) {
+	public String boardWrite2(String title, String contents, HttpSession session, Model model, MultipartFile upload) {
 		String id = (String) session.getAttribute("id");
 		Board_VO vo = new Board_VO();
+
+		if (upload != null) {
+			logger.debug("제목 :{}, name :{}, size :{},  :contentType {}", title, upload.getName(), upload.getSize(),
+					upload.getContentType());
+
+			vo.setId(id);
+			vo.setTitle(title);
+			vo.setContents(contents);
+			FileService F = new FileService();
+			String savedfile = F.saveFile(upload, uploadPath);
+			vo.setOriginalfile(upload.getOriginalFilename());
+			vo.setSavedfile(savedfile);
+			dao.boardWrite(vo);
+
+			return "redirect:/board/boardList";
+		}
 
 		vo.setId(id);
 		vo.setTitle(title);
@@ -98,7 +118,7 @@ public class BoardController {
 			logger.debug("아이디 확인");
 			dao.boardUpdate(vo);
 		}
-	
+
 		return "redirect:/board/boardList";
 	}
 }

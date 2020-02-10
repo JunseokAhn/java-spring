@@ -36,7 +36,7 @@
 				</tr>
 				<tr>
 					<td class="td1">파일첨부</td>
-					<td class="td2"></td>
+					<td class="td2">${vo.originalfile }</td>
 				</tr>
 			</table>
 			<c:if test="${vo.id==sessionScope.id }">

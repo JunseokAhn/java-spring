@@ -37,10 +37,17 @@
 
 	<insert id="boardWrite" parameterType="Board">
 		insert into web5_board
-		(boardnum, id, title, contents)
+		(boardnum, id, title, contents
+		<if test="originalfile !=null and savedfile != null">
+			,originalfile, savedfile
+		</if>
+		)
 		values
-		(web5_board_seq.nextval, #{id},
-		#{title}, #{contents})
+		(web5_board_seq.nextval, #{id}, #{title}, #{contents}
+		<if test="originalfile !=null and savedfile != null">
+			,#{originalfile}, #{savedfile}
+		</if>
+		)
 	</insert>
 
 	<select id="selectBoardList" resultType="Board">
@@ -53,19 +60,22 @@
 		update web5_board set hits
 		= hits+1 where boardnum like #{boardnum}
 	</update>
-	
+
 	<select id="boardSearch" parameterType="String"
 		resultType="Board">
 		select * from web5_board where boardnum=#{boardnum}
 	</select>
-	
+
 	<delete id="boardDelete" parameterType="String">
-		delete from web5_board where boardnum = #{boardnum}
+		delete from web5_board
+		where boardnum = #{boardnum}
 	</delete>
-	
+
 	<update id="boardUpdate" parameterType="Board">
 		update web5_board
-		set title = #{title}, contents = #{contents}, inputdate = default
-		where boardnum = #{boardnum}
+		set
+		title = #{title}, contents = #{contents}, inputdate = default
+		where
+		boardnum = #{boardnum}
 	</update>
 </mapper>

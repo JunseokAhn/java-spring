@@ -59,9 +59,7 @@ public class dao {
 	public boolean boardWrite(Board_VO vo) {
 		// TODO Auto-generated method stub
 		mapper mapper = session.getMapper(mapper.class);
-		System.out.println(vo.getId());
-		System.out.println(vo.getTitle());
-		System.out.println(vo.getContents());
+
 		int res = mapper.boardWrite(vo);
 		return res > 0;
 	}

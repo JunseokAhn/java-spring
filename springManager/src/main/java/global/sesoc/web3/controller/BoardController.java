@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import global.sesoc.web3.dao.dao;
 import global.sesoc.web3.util.FileService;
 import global.sesoc.web3.vo.Board_VO;
+import global.sesoc.web3.vo.Reply_VO;
 
 @Controller
 @RequestMapping("board")
@@ -86,8 +87,9 @@ public class BoardController {
 	public String boardSearch(String boardnum, Model model) {
 
 		Board_VO vo = dao.boardSearch(boardnum);
-
 		model.addAttribute("vo", vo);
+		ArrayList<Reply_VO> replyList = dao.replySearch(boardnum);
+		model.addAttribute("reply", replyList);
 		return "board/boardSearch";
 	}
 

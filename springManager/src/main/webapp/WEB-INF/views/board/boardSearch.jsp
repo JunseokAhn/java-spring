@@ -63,11 +63,29 @@
 				리플내용
 				<input id="text" name="text">
 				<input type="submit" value="확인">
+
+				<input type="hidden" name="replyId" value="${sessionScope.id }">
+				<input type="hidden" name="boardnum" value="${vo.boardnum }">
+				<c:if test="${reply!=null}">
+					<table class="set_table">
+						<c:forEach var="i" items="${reply }">
+							<tr>
+								<td class="td1" width=65>${i.id}</td>
+								<td class="td2" width="370">${i.text }</td>
+								<td class="td2" width="65">
+									<c:if test="">수정</c:if>
+								</td>
+								<td class="td2" width="65">
+									<c:if test="">삭제</c:if>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:if>
 			</div>
-			<input type="hidden" name="replyId" value="${sessionScope.id }">
-			<input type="hidden" name="boardnum" value="${vo.boardnum }">
 		</form>
 	</div>
+
 	<a href="<c:url value="/"/>">
 		<img alt="" src="
 			<c:url value="/resources/img/home.png"/>"

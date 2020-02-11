@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="global.sesoc.web3.vo.Member_VO" alias="Member" />
 		<typeAlias type="global.sesoc.web3.vo.Board_VO" alias="Board" />
+		<typeAlias type="global.sesoc.web3.vo.Reply_VO" alias="Reply"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/mapper.xml" />

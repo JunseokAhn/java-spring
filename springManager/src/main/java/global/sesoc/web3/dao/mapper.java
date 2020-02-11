@@ -31,4 +31,6 @@ public interface mapper {
 	public void boardUpdate(Board_VO vo);
 
 	public void addReply(Reply_VO vo);
+
+	public ArrayList<Reply_VO> replySearch(String boardnum);
 }

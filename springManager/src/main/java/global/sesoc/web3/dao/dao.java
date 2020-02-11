@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import global.sesoc.web3.vo.Board_VO;
 import global.sesoc.web3.vo.Member_VO;
+import global.sesoc.web3.vo.Reply_VO;
 
 @Repository
 public class dao {
@@ -92,6 +93,12 @@ public class dao {
 		mapper mapper = session.getMapper(mapper.class);
 		mapper.boardUpdate(vo);
 		return true;
+	}
+
+	public void addReply(Reply_VO vo) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		mapper.addReply(vo);
 	}
 
 }

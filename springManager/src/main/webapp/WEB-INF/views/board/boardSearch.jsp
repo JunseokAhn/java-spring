@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="divCenter">
-		<div class="divWhite">
+		<div class="divIn">
 			<h1>[게시판 글 읽기]</h1>
 			<table class="set_table">
 				<tr>
@@ -36,7 +36,14 @@
 				</tr>
 				<tr>
 					<td class="td1">파일첨부</td>
-					<td class="td2">${vo.originalfile }</td>
+					<td class="td2">
+						<c:if test="${vo.originalfile!=null }">
+							<a href="download?boardnum=${vo.boardnum }">${vo.boardnum }</a>
+						</c:if>
+						<c:if test="${vo.originalfile==null }">
+						파일 없음</c:if>
+					</td>
+
 				</tr>
 			</table>
 			<c:if test="${vo.id==sessionScope.id }">
@@ -48,10 +55,24 @@
 				<input type="button" value="목록으로" onclick="goBoardList()">
 			</c:if>
 		</div>
+		<br>
+		<br>
+		<form action="<c:url value="/reply/addReply"/>" method="post">
+
+			<div class="divIn">
+				리플내용
+				<input id="text" name="text">
+				<input type="submit" value="확인">
+			</div>
+			<input type="hidden" name="replyId" value="${sessionScope.id }">
+			<input type="hidden" name="boardnum" value="${vo.boardnum }">
+		</form>
 	</div>
-	<a href="<c:url value="/"/>"><img alt=""
-		src="
-			<c:url value="/resources/img/home.png"/>" class="goMain"></a>
+	<a href="<c:url value="/"/>">
+		<img alt="" src="
+			<c:url value="/resources/img/home.png"/>"
+			class="goMain">
+	</a>
 	<script type="text/javascript">
 		function boardDelete(boardnum) {
 			location.href = "boardDelete?boardnum=${vo.boardnum}&id=${vo.id}";

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import global.sesoc.web3.vo.Board_VO;
 import global.sesoc.web3.vo.Member_VO;
+import global.sesoc.web3.vo.Reply_VO;
 
 public interface mapper {
 
@@ -28,4 +29,6 @@ public interface mapper {
 	public int boardDelete(String boardnum);
 
 	public void boardUpdate(Board_VO vo);
+
+	public void addReply(Reply_VO vo);
 }

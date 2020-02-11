@@ -12,7 +12,7 @@
 <body>
 
 	<div class="divCenter">
-		<div class="divIn" style="width: 75%;">
+		<div class="divIn">
 			<h1>[게시판]</h1>
 			<span style="float: left;"> 전체 : ${listSize } </span>
 			<input type="button" style="float: right;" value="글쓰기"

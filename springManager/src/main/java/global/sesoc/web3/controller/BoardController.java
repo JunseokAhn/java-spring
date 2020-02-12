@@ -53,12 +53,14 @@ public class BoardController {
 		int countPerPage = PN.getCountPerPage();
 		ArrayList<Board_VO> list = dao.selectBoardList2(searchText, startRecord, countPerPage);
 
-//		for (Board_VO i : list) {
-//			System.out.println(i);
-//		}
+		for (Board_VO i : list) {
+			System.out.println(i);
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("listSize", totalRecordsCouunt);
 		model.addAttribute("PN", PN);
+		model.addAttribute("searchText", searchText);
+
 		return "board/boardList";
 	}
 

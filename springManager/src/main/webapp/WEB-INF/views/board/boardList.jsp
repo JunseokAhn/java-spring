@@ -47,11 +47,12 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="boardList?page=${PN.currentPage-10}">
+			<a
+				href="boardList?page=${PN.currentPage-10}&searchText=${searchText}">
 				<img src="<c:url value="/resources/img/leftDoubleArrow.png"/>"
 					width="30px;">
 			</a>
-			<a href="boardList?page=${PN.currentPage-5}">
+			<a href="boardList?page=${PN.currentPage-5}&searchText=${searchText}">
 				<img src="<c:url value="/resources/img/leftArrow.png"/>"
 					width="30px;">
 			</a>
@@ -61,11 +62,12 @@
 					<a href="boardList?page=${i}" style="color: black;">${i}</a>
 				</c:forEach>
 			</span>
-			<a href="boardList?page=${PN.currentPage+5}">
+			<a href="boardList?page=${PN.currentPage+5}&searchText=${searchText}">
 				<img src="<c:url value="/resources/img/rightArrow.png"/>"
 					width="30px;">
 			</a>
-			<a href="boardList?page=${PN.currentPage+10}">
+			<a
+				href="boardList?page=${PN.currentPage+10}&searchText=${searchText}">
 				<img src="<c:url value="/resources/img/rightDoubleArrow.png"/>"
 					width="30px;">
 			</a>
@@ -75,6 +77,7 @@
 				<input name="searchText">
 				<input type="submit" value="검색">
 			</form>
+			<hr>
 		</div>
 	</div>
 	<script type="text/javascript">

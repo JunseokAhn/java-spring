@@ -18,6 +18,7 @@ public class PageNavigator {
 	private int endPageGroup; // 현재 그룹의 마지막 페이지
 	private int startRecord; // 전체 레코드 중 현재 페이지 첫 글의 위치 (0부터 시작)
 
+
 	public PageNavigator() {
 		// TODO Auto-generated constructor stub
 	}

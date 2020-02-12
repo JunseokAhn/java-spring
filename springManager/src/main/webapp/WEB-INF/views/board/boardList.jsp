@@ -47,30 +47,12 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<a
-				href="boardList?page=${PN.currentPage-10}&searchText=${searchText}">
-				<img src="<c:url value="/resources/img/leftDoubleArrow.png"/>"
-					width="30px;">
-			</a>
-			<a href="boardList?page=${PN.currentPage-5}&searchText=${searchText}">
-				<img src="<c:url value="/resources/img/leftArrow.png"/>"
-					width="30px;">
-			</a>
-			<span style="font-size: 140%;">
-				<c:forEach var="i" begin="${PN.startPageGroup}"
-					end="${PN.endPageGroup }">
+			<span id="leftDouble"></span> <span id="left"></span> <span
+				style="font-size: 140%;"> <c:forEach var="i"
+					begin="${PN.startPageGroup}" end="${PN.endPageGroup }">
 					<a href="boardList?page=${i}" style="color: black;">${i}</a>
 				</c:forEach>
-			</span>
-			<a href="boardList?page=${PN.currentPage+5}&searchText=${searchText}">
-				<img src="<c:url value="/resources/img/rightArrow.png"/>"
-					width="30px;">
-			</a>
-			<a
-				href="boardList?page=${PN.currentPage+10}&searchText=${searchText}">
-				<img src="<c:url value="/resources/img/rightDoubleArrow.png"/>"
-					width="30px;">
-			</a>
+			</span> <span id="right"></span> <span id="rightDouble"></span>
 			<hr>
 			<form action="boardList">
 				제목 :
@@ -81,7 +63,38 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		function goWriteForm() {
+
+	var leftDouble = document.getElementById("leftDouble");
+	var left = document.getElementById("left");
+	var rightDouble = document.getElementById("rightDouble");
+	var right = document.getElementById("right");
+	
+	var leftDouble2 =  "<a href='boardList?page=${PN.currentPage-10}&searchText=${searchText}''><img src='<c:url value='/resources/img/leftDoubleArrow.png'/>'width='30px;'></a>"
+	
+	var left2 ="<a href='boardList?page=${PN.currentPage-5}&searchText=${searchText}'><img src='<c:url value='/resources/img/leftArrow.png'/>'width='30px;'></a>"
+		
+	var rightDouble2 ="<a href='boardList?page=${PN.currentPage+10}&searchText=${searchText}'><img src='<c:url value='/resources/img/rightDoubleArrow.png'/>'width='30px;'></a>"
+		
+	var right2 ="<a href='boardList?page=${PN.currentPage+5}&searchText=${searchText}'><img src='<c:url value='/resources/img/rightArrow.png'/>'width='30px;'></a>"
+		
+	if(${PN.startPageGroup-PN.pagePerGroup > 1}){
+		//leftDouble
+		leftDouble.innerHTML=leftDouble2;
+	}
+	if(${PN.startPageGroup>1}){
+		//left
+		left.innerHTML=left2;
+	}
+	if(${PN.endPageGroup < PN.totalPageCount}){
+		//right
+		right.innerHTML = right2;
+	}
+	if(${PN.endPageGroup+PN.pagePerGroup < PN.totalPageCount}){
+		//rightDouble
+		rightDouble.innerHTML=rightDouble2;
+	
+	}
+	function goWriteForm() {
 
 			location.href = "boardWrite";
 		}

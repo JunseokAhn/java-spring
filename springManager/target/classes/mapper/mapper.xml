@@ -50,19 +50,26 @@
 		)
 	</insert>
 
-	<select id="selectBoardList" resultType="Board">
-		select boardnum, id,
-		title, contents, to_char(inputdate,'YYYY-MM-DD') inputdate,
-		hits,
-		originalfile, savedfile from web5_board
-		order by boardnum desc
+	<select id="selectBoardListSize" parameterType="String"
+		resultType="int">
+		select count(*)
+		from web5_board
+		<if test="#{_parameter!=null}">
+			where title like '%'||#{searchText}||'%'
+		</if>
 	</select>
 
-	<select id="selectBoardList2" resultType="Board">
+	<select id="selectBoardList2" parameterType="String"
+		resultType="Board">
 		select boardnum, id,
-		title, contents, to_char(inputdate,'YYYY-MM-DD') inputdate,
+		title, contents,
+		to_char(inputdate,'YYYY-MM-DD')
+		inputdate,
 		hits,
-		originalfile, savedfile from web5_board
+		originalfile, savedfile
+		from web5_board
+		<if test="#{_parameter!=null}">
+			where title like '%'||#{searchText}||'%' </if>
 		order by boardnum desc
 	</select>
 

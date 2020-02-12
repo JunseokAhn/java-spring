@@ -67,11 +67,11 @@ public class dao {
 		return res > 0;
 	}
 
-	public ArrayList<Board_VO> selectBoardList() {
+	public int selectBoardListSize(String searchText) {
 		// TODO Auto-generated method stub
 		mapper mapper = session.getMapper(mapper.class);
-		ArrayList<Board_VO> list = mapper.selectBoardList();
-		return list;
+		int listSize = mapper.selectBoardListSize(searchText);
+		return listSize;
 	}
 
 	public Board_VO boardSearch(String boardnum) {
@@ -113,8 +113,11 @@ public class dao {
 	public ArrayList<Board_VO> selectBoardList2(String searchText, int startRecord, int countPerPage) {
 		// TODO Auto-generated method stub
 		mapper mapper = session.getMapper(mapper.class);
+
 		RowBounds RB = new RowBounds(startRecord, countPerPage);
-		ArrayList<Board_VO> boardList = mapper.selectBoardList2(RB);
+
+		ArrayList<Board_VO> boardList = mapper.selectBoardList2(searchText, RB);
+
 		return boardList;
 	}
 

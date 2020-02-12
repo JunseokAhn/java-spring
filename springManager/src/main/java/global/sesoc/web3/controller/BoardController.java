@@ -44,14 +44,15 @@ public class BoardController {
 	public String boardList(Model model, @RequestParam(value = "page", defaultValue = "1") int page,
 			@RequestParam(value = "searchText", defaultValue = "") String searchText) {
 
-		ArrayList<Board_VO> list = dao.selectBoardList();
-		int totalRecordsCouunt = list.size();
+		int totalRecordsCouunt = dao.selectBoardListSize(searchText);
 
+		System.out.println(searchText);
 		PageNavigator PN = new PageNavigator(page, totalRecordsCouunt);
 		int totalPageCount = PN.getTotalPageCount();
 		int startRecord = PN.getStartRecord();
 		int countPerPage = PN.getCountPerPage();
-		list = dao.selectBoardList2(searchText, startRecord, countPerPage);
+		ArrayList<Board_VO> list = dao.selectBoardList2(searchText, startRecord, countPerPage);
+
 //		for (Board_VO i : list) {
 //			System.out.println(i);
 //		}

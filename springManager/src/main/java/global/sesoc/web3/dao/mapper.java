@@ -22,8 +22,6 @@ public interface mapper {
 
 	public int boardWrite(Board_VO vo);
 
-	public ArrayList<Board_VO> selectBoardList();
-
 	public Board_VO boardSearch(String boardnum);
 
 	public void boardHits(String boardnum);
@@ -36,5 +34,7 @@ public interface mapper {
 
 	public ArrayList<Reply_VO> replySearch(String boardnum);
 
-	public ArrayList<Board_VO> selectBoardList2(RowBounds RB);
+	public ArrayList<Board_VO> selectBoardList2(String searchText, RowBounds RB);
+
+	public int selectBoardListSize(String searchText);
 }

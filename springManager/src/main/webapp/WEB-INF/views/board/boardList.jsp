@@ -47,20 +47,28 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<img src="<c:url value="/resources/img/leftDoubleArrow.png"/>"
-				width="30px;">
-			<img src="<c:url value="/resources/img/leftArrow.png"/>"
-				width="30px;">
+			<a href="boardList?page=${PN.currentPage-10}">
+				<img src="<c:url value="/resources/img/leftDoubleArrow.png"/>"
+					width="30px;">
+			</a>
+			<a href="boardList?page=${PN.currentPage-5}">
+				<img src="<c:url value="/resources/img/leftArrow.png"/>"
+					width="30px;">
+			</a>
 			<span style="font-size: 140%;">
 				<c:forEach var="i" begin="${PN.startPageGroup}"
 					end="${PN.endPageGroup }">
-					<a href="boardList?page=${i}">${i}</a>
+					<a href="boardList?page=${i}" style="color: black;">${i}</a>
 				</c:forEach>
 			</span>
-			<img src="<c:url value="/resources/img/rightArrow.png"/>"
-				width="30px;">
-			<img src="<c:url value="/resources/img/rightDoubleArrow.png"/>"
-				width="30px;">
+			<a href="boardList?page=${PN.currentPage+5}">
+				<img src="<c:url value="/resources/img/rightArrow.png"/>"
+					width="30px;">
+			</a>
+			<a href="boardList?page=${PN.currentPage+10}">
+				<img src="<c:url value="/resources/img/rightDoubleArrow.png"/>"
+					width="30px;">
+			</a>
 			<hr>
 			<form action="boardList">
 				제목 :

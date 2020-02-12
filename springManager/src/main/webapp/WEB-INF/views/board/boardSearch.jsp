@@ -73,10 +73,14 @@
 								<td class="td1" width=65>${i.id}</td>
 								<td class="td2" width="370">${i.text }</td>
 								<td class="td2" width="65">
-									<c:if test="">수정</c:if>
+									<c:if test="${sessionScope.id==i.id}">
+										<input type="button" value="수정">
+									</c:if>
 								</td>
 								<td class="td2" width="65">
-									<c:if test="">삭제</c:if>
+									<c:if test="${sessionScope.id==i.id}">
+										<input type="button" value="삭제">
+									</c:if>
 								</td>
 							</tr>
 						</c:forEach>

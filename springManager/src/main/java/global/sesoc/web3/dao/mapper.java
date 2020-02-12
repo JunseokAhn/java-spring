@@ -2,6 +2,8 @@ package global.sesoc.web3.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
+
 import global.sesoc.web3.vo.Board_VO;
 import global.sesoc.web3.vo.Member_VO;
 import global.sesoc.web3.vo.Reply_VO;
@@ -33,4 +35,6 @@ public interface mapper {
 	public void addReply(Reply_VO vo);
 
 	public ArrayList<Reply_VO> replySearch(String boardnum);
+
+	public ArrayList<Board_VO> selectBoardList2(RowBounds RB);
 }

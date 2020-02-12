@@ -18,10 +18,12 @@
 			<input type="button" style="float: right;" value="글쓰기"
 				onclick="goWriteForm()">
 			<br>
-			<a href="<c:url value="/"/>"><img alt=""
-				src="
-			<c:url value="/resources/img/home.png"/>" class="goMain"></a>
-	
+			<a href="<c:url value="/"/>">
+				<img alt="" src="
+			<c:url value="/resources/img/home.png"/>"
+					class="goMain">
+			</a>
+
 			<hr>
 			<table class="set_table">
 
@@ -45,6 +47,21 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<img src="<c:url value="/resources/img/leftDoubleArrow.png"/>"
+				width="30px;">
+			<img src="<c:url value="/resources/img/leftArrow.png"/>"
+				width="30px;">
+			<span style="font-size: 140%;">1 2 3 4 5</span>
+			<img src="<c:url value="/resources/img/rightArrow.png"/>"
+				width="30px;">
+			<img src="<c:url value="/resources/img/rightDoubleArrow.png"/>"
+				width="30px;">
+			<hr>
+			<form action="boardList">
+				제목 :
+				<input name="searchText">
+				<input type="submit" value="검색">
+			</form>
 		</div>
 	</div>
 	<script type="text/javascript">

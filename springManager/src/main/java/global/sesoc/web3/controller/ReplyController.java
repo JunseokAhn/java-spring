@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import global.sesoc.web3.dao.dao;
 import global.sesoc.web3.vo.Reply_VO;
+import lombok.val;
 
 @Controller
 @RequestMapping("reply")
@@ -26,4 +27,8 @@ public class ReplyController {
 		return "redirect:/board/boardSearch?boardnum=" + boardnum;
 	}
 
+	@PostMapping(value = "replyUpdate")
+	public String replyUpdate() {
+		return "";
+	}
 }

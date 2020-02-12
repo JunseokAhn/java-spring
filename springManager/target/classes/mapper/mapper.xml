@@ -55,11 +55,22 @@
 		title, contents, to_char(inputdate,'YYYY-MM-DD') inputdate,
 		hits,
 		originalfile, savedfile from web5_board
+		order by boardnum desc
 	</select>
+
+	<select id="selectBoardList2" resultType="Board">
+		select boardnum, id,
+		title, contents, to_char(inputdate,'YYYY-MM-DD') inputdate,
+		hits,
+		originalfile, savedfile from web5_board
+		order by boardnum desc
+	</select>
+
 	<update id="boardHits" parameterType="String">
 		update web5_board set hits
 		= hits+1 where boardnum like #{boardnum}
 	</update>
+
 
 	<select id="boardSearch" parameterType="String"
 		resultType="Board">
@@ -86,7 +97,8 @@
 		(web5_reply_seq.nextval, #{boardnum}, #{id}, #{text})
 	</insert>
 
-	<select id="replySearch" parameterType="String" resultType="Reply">
+	<select id="replySearch" parameterType="String"
+		resultType="Reply">
 		select * from web5_reply
 	</select>
 </mapper>

@@ -2,10 +2,12 @@ package global.sesoc.web3.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import global.sesoc.web3.util.PageNavigator;
 import global.sesoc.web3.vo.Board_VO;
 import global.sesoc.web3.vo.Member_VO;
 import global.sesoc.web3.vo.Reply_VO;
@@ -104,8 +106,16 @@ public class dao {
 	public ArrayList<Reply_VO> replySearch(String boardnum) {
 		// TODO Auto-generated method stub
 		mapper mapper = session.getMapper(mapper.class);
-		ArrayList<Reply_VO> replyList =	mapper.replySearch(boardnum);
+		ArrayList<Reply_VO> replyList = mapper.replySearch(boardnum);
 		return replyList;
+	}
+
+	public ArrayList<Board_VO> selectBoardList2(String searchText, int startRecord, int countPerPage) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		RowBounds RB = new RowBounds(startRecord, countPerPage);
+		ArrayList<Board_VO> boardList = mapper.selectBoardList2(RB);
+		return boardList;
 	}
 
 }

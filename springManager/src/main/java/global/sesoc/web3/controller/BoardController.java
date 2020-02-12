@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import global.sesoc.web3.dao.dao;
 import global.sesoc.web3.util.FileService;
+import global.sesoc.web3.util.PageNavigator;
 import global.sesoc.web3.vo.Board_VO;
 import global.sesoc.web3.vo.Reply_VO;
 
@@ -39,13 +41,22 @@ public class BoardController {
 	dao dao;
 
 	@RequestMapping(value = "boardList", method = RequestMethod.GET)
-	public String boardList(Model model) {
+	public String boardList(Model model, @RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "searchText", defaultValue = "") String searchText) {
+
 		ArrayList<Board_VO> list = dao.selectBoardList();
-		for (Board_VO i : list) {
-			System.out.println(i);
-		}
+		int totalRecordsCouunt = list.size();
+
+		PageNavigator PN = new PageNavigator(page, totalRecordsCouunt);
+		int totalPageCount = PN.getTotalPageCount();
+		int startRecord = PN.getStartRecord();
+		int countPerPage = PN.getCountPerPage();
+		list = dao.selectBoardList2(searchText, startRecord, countPerPage);
+//		for (Board_VO i : list) {
+//			System.out.println(i);
+//		}
 		model.addAttribute("list", list);
-		model.addAttribute("listSize", list.size());
+		model.addAttribute("listSize", totalRecordsCouunt);
 		return "board/boardList";
 	}
 

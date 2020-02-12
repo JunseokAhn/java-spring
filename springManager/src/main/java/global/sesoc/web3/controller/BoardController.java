@@ -58,6 +58,7 @@ public class BoardController {
 //		}
 		model.addAttribute("list", list);
 		model.addAttribute("listSize", totalRecordsCouunt);
+		model.addAttribute("PN", PN);
 		return "board/boardList";
 	}
 

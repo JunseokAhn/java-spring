@@ -42,6 +42,10 @@ body {
 	background-color: rgb(245, 245, 200);
 }
 
+a {
+	text-decoration: none;
+}
+
 .goMain {
 	position: absolute;
 	width: 50px;

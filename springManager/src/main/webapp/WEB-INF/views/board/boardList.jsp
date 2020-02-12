@@ -51,7 +51,12 @@
 				width="30px;">
 			<img src="<c:url value="/resources/img/leftArrow.png"/>"
 				width="30px;">
-			<span style="font-size: 140%;">1 2 3 4 5</span>
+			<span style="font-size: 140%;">
+				<c:forEach var="i" begin="${PN.startPageGroup}"
+					end="${PN.endPageGroup }">
+					<a href="boardList?page=${i}">${i}</a>
+				</c:forEach>
+			</span>
 			<img src="<c:url value="/resources/img/rightArrow.png"/>"
 				width="30px;">
 			<img src="<c:url value="/resources/img/rightDoubleArrow.png"/>"

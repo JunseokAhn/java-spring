@@ -106,6 +106,6 @@
 
 	<select id="replySearch" parameterType="String"
 		resultType="Reply">
-		select * from web5_reply
+		select * from web5_reply where boardnum = #{boardnum}
 	</select>
 </mapper>

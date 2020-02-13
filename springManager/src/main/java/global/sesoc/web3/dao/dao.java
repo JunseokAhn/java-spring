@@ -74,6 +74,17 @@ public class dao {
 		return listSize;
 	}
 
+	public Board_VO boardSearch(String boardnum, String replyCheck) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		if (replyCheck.equals("on")) {
+			mapper.boardHits(boardnum);
+		}
+
+		Board_VO vo = mapper.boardSearch(boardnum);
+		return vo;
+	}
+
 	public Board_VO boardSearch(String boardnum) {
 		// TODO Auto-generated method stub
 		mapper mapper = session.getMapper(mapper.class);

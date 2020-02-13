@@ -46,7 +46,6 @@ public class BoardController {
 
 		int totalRecordsCouunt = dao.selectBoardListSize(searchText);
 
-		System.out.println(searchText);
 		PageNavigator PN = new PageNavigator(page, totalRecordsCouunt);
 		int totalPageCount = PN.getTotalPageCount();
 		int startRecord = PN.getStartRecord();
@@ -95,9 +94,10 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "boardSearch")
-	public String boardSearch(String boardnum, Model model) {
+	public String boardSearch(String boardnum, Model model,
+			@RequestParam(value = "replyCheck", defaultValue = "off") String replyCheck) {
 
-		Board_VO vo = dao.boardSearch(boardnum);
+		Board_VO vo = dao.boardSearch(boardnum, replyCheck);
 		model.addAttribute("vo", vo);
 		ArrayList<Reply_VO> replyList = dao.replySearch(boardnum);
 		model.addAttribute("reply", replyList);

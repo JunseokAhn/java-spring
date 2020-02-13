@@ -63,7 +63,7 @@
 				리플내용
 				<input id="text" name="text">
 				<input type="submit" value="확인">
-
+				<input type="hidden" name="replyCheck" value="on">
 				<input type="hidden" name="replyId" value="${sessionScope.id }">
 				<input type="hidden" name="boardnum" value="${vo.boardnum }">
 				<c:if test="${reply!=null}">

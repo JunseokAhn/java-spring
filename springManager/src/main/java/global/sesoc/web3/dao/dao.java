@@ -96,7 +96,6 @@ public class dao {
 	public boolean boardDelete(String boardnum) {
 		// TODO Auto-generated method stub
 		mapper mapper = session.getMapper(mapper.class);
-		System.out.println(boardnum);
 		int res = mapper.boardDelete(boardnum);
 		return res > 0;
 	}

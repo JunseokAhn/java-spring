@@ -110,8 +110,14 @@ public class BoardController {
 		String realId = (String) session.getAttribute("id");
 		if (id.equals(realId)) {
 			logger.debug("아이디 확인");
-			boolean res = dao.boardDelete(boardnum);
-
+			Board_VO vo = dao.boardSearch(boardnum);
+			String savedfile = vo.getSavedfile();
+			String fullpath = uploadPath + "/" + savedfile;
+			System.out.println(fullpath);
+			boolean res = FileService.deleteFile(fullpath);
+			if (res)
+				System.out.println("첨부파일 삭제성공");
+			res = dao.boardDelete(boardnum);
 		}
 
 		return "redirect:/board/boardList";

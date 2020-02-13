@@ -38,7 +38,7 @@
 					<td class="td1">파일첨부</td>
 					<td class="td2">
 						<c:if test="${vo.originalfile!=null }">
-							<a href="download?boardnum=${vo.boardnum }">${vo.boardnum }</a>
+							<a href="download?boardnum=${vo.boardnum }">${vo.originalfile }</a>
 						</c:if>
 						<c:if test="${vo.originalfile==null }">
 						파일 없음</c:if>
@@ -79,7 +79,7 @@
 								</td>
 								<td class="td2" width="65">
 									<c:if test="${sessionScope.id==i.id}">
-										<input type="button" value="삭제">
+										<input type="button" value="삭제" onclick="location.href=''">
 									</c:if>
 								</td>
 							</tr>

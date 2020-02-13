@@ -47,16 +47,28 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<span id="leftDouble" class="arrow"></span>
-			<span id="left" class="arrow"></span>
-			<span style="font-size: 140%;">
-				<c:forEach var="i" begin="${PN.startPageGroup}"
-					end="${PN.endPageGroup }">
-					<a href="boardList?page=${i}" style="color: black;">${i}</a>
-				</c:forEach>
-			</span>
-			<span id="right" class="arrow"></span>
-			<span id="rightDouble" class="arrow"></span>
+			<table class="set_table">
+				<tr>
+					<td class="arrows">
+						<span id="leftDouble" class="arrow"></span>
+					</td>
+					<td class="arrows">
+						<span id="left" class="arrow"></span>
+					</td>
+					<c:forEach var="i" begin="${PN.startPageGroup}"
+						end="${PN.endPageGroup }">
+						<td class="arrows">
+							<a href="boardList?page=${i}" style="color: black;">${i}</a>
+						</td>
+					</c:forEach>
+					<td class="arrows">
+						<span id="right" class="arrow"></span>
+					</td>
+					<td class="arrows">
+						<span id="rightDouble" class="arrow"></span>
+					</td>
+				</tr>
+			</table>
 			<hr>
 			<form action="boardList">
 				제목 :

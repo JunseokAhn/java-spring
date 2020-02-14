@@ -131,4 +131,11 @@ public class dao {
 		return boardList;
 	}
 
+	public void deleteReply(String replynum) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		mapper.deleteReply(replynum);
+	
+	}
+
 }

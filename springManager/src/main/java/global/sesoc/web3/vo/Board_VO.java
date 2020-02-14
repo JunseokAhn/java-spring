@@ -13,6 +13,4 @@ public class Board_VO {
 	private String originalfile;
 	private String savedfile;
 	
-
-	
 }

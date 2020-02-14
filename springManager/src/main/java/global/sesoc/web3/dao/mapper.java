@@ -37,4 +37,6 @@ public interface mapper {
 	public ArrayList<Board_VO> selectBoardList2(String searchText, RowBounds RB);
 
 	public int selectBoardListSize(String searchText);
+
+	public void deleteReply(String replynum);
 }

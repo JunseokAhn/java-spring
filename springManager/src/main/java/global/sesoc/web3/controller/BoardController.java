@@ -95,12 +95,14 @@ public class BoardController {
 
 	@GetMapping(value = "boardSearch")
 	public String boardSearch(String boardnum, Model model,
-			@RequestParam(value = "replyCheck", defaultValue = "off") String replyCheck) {
+			@RequestParam(value = "replyCheck", defaultValue = "off") String replyCheck,
+			@RequestParam(value = "updateCheck", defaultValue = "off") String updateCheck) {
 
 		Board_VO vo = dao.boardSearch(boardnum, replyCheck);
 		model.addAttribute("vo", vo);
 		ArrayList<Reply_VO> replyList = dao.replySearch(boardnum);
 		model.addAttribute("reply", replyList);
+		model.addAttribute("updateCheck", updateCheck);
 		return "board/boardSearch";
 	}
 

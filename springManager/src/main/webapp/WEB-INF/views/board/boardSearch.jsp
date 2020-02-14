@@ -66,27 +66,56 @@
 				<input type="hidden" name="replyCheck" value="on">
 				<input type="hidden" name="replyId" value="${sessionScope.id }">
 				<input type="hidden" name="boardnum" value="${vo.boardnum }">
-				<c:if test="${reply!=null}">
-					<table class="set_table">
-						<c:forEach var="i" items="${reply }">
+
+			</div>
+		</form>
+
+		<form action="../reply/replyUpdate" method="post">
+			<c:if test="${reply!=null}">
+
+				<table class="set_table">
+					<c:forEach var="i" items="${reply }">
+						<c:if test="${updateCheck.equals('off') }">
 							<tr>
 								<td class="td1" width=65>${i.id}</td>
 								<td class="td2" width="370">${i.text }</td>
 								<td class="td2" width="65">
 									<c:if test="${sessionScope.id==i.id}">
-										<input type="button" value="수정">
+										<input type="button" value="수정"
+											onclick="location.href='../reply/replyUpdate?replynum=${i.replynum}&id=${i.id }&boardnum=${i.boardnum }&updateCheck=on'">
 									</c:if>
 								</td>
 								<td class="td2" width="65">
 									<c:if test="${sessionScope.id==i.id}">
-										<input type="button" value="삭제" onclick="location.href=''">
+										<input type="button" value="삭제"
+											onclick="location.href='../reply/deleteReply?replynum=${i.replynum}&id=${i.id }&boardnum=${i.boardnum }'">
 									</c:if>
 								</td>
 							</tr>
-						</c:forEach>
-					</table>
-				</c:if>
-			</div>
+						</c:if>
+						<c:if test="${!updateCheck.equals('off') }">
+							<tr>
+								<td class="td1" width=65>${i.id}</td>
+								<td class="td2" width="370">
+									<input name="updatedText">
+								</td>
+								<td class="td2" width="65">
+									<c:if test="${sessionScope.id==i.id}">
+										<input type="submit" value="수정완료">
+									</c:if>
+									<input type="hidden" name="replynum" value="${i.replynum }">
+									<input type="hidden" name="id" value="${i.id }">
+									<input type="hidden" name="boardnum" value="${i.boardnum }">
+								</td>
+
+								<td class="td2" width="65">
+									
+								</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</table>
+			</c:if>
 		</form>
 	</div>
 

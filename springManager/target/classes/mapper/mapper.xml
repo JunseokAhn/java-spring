@@ -108,4 +108,8 @@
 		resultType="Reply">
 		select * from web5_reply where boardnum = #{boardnum}
 	</select>
+
+	<select id="deleteReply" parameterType="String">
+		delete web5_reply where replynum=#{replynum}
+	</select>
 </mapper>

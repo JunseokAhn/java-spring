@@ -12,5 +12,5 @@ public class Board_VO {
 	private int hits;
 	private String originalfile;
 	private String savedfile;
-	
+	private int replycount;
 }

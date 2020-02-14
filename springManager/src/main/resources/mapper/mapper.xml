@@ -61,16 +61,16 @@
 
 	<select id="selectBoardList2" parameterType="String"
 		resultType="Board">
-		select boardnum, id,
-		title, contents,
-		to_char(inputdate,'YYYY-MM-DD')
-		inputdate,
-		hits,
-		originalfile, savedfile
-		from web5_board
+		select boardnum, id, title, contents,
+		to_char(inputdate,'YYYY-MM-DD') inputdate,
+		hits, originalfile,
+		savedfile, (select count(*) from web5_reply a where
+		a.boardnum =
+		b.boardnum) as replycount
+		from web5_board b
 		<if test="#{_parameter!=null}">
 			where title like '%'||#{searchText}||'%' </if>
-		order by boardnum desc
+		order by b.boardnum desc
 	</select>
 
 	<update id="boardHits" parameterType="String">

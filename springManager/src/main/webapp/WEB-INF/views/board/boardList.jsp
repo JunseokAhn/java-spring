@@ -40,7 +40,7 @@
 						<td class="td2" class="title"
 							onclick="location.href= 'boardSearch?boardnum=${i.boardnum }'"
 							onmouseover="this.style.color='blue';"
-							onmouseout="this.style.color='black';" style="cursor: pointer;">${i.title }</td>
+							onmouseout="this.style.color='black';" style="cursor: pointer;">${i.title } [${i.replycount }]</td>
 						<td class="td2" style="text-align: center;">${i.id }</td>
 						<td class="td2" style="text-align: center;">${i.hits }</td>
 						<td class="td2" style="text-align: center;">${i.inputdate }</td>

@@ -1,6 +1,7 @@
 package global.sesoc.web3.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 
@@ -39,4 +40,6 @@ public interface mapper {
 	public int selectBoardListSize(String searchText);
 
 	public void deleteReply(String replynum);
+
+	public void replyUpdate(HashMap<String, String> map);
 }

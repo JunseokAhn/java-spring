@@ -75,14 +75,14 @@
 
 				<table class="set_table">
 					<c:forEach var="i" items="${reply }">
-						<c:if test="${updateCheck.equals('off') }">
+						<c:if test="${i.replynum!=updatingNum }">
 							<tr>
 								<td class="td1" width=65>${i.id}</td>
 								<td class="td2" width="370">${i.text }</td>
 								<td class="td2" width="65">
 									<c:if test="${sessionScope.id==i.id}">
 										<input type="button" value="수정"
-											onclick="location.href='../reply/replyUpdate?replynum=${i.replynum}&id=${i.id }&boardnum=${i.boardnum }&updateCheck=on'">
+											onclick="location.href='../reply/replyUpdate?replynum=${i.replynum}&id=${i.id }&boardnum=${i.boardnum }'">
 									</c:if>
 								</td>
 								<td class="td2" width="65">
@@ -93,7 +93,7 @@
 								</td>
 							</tr>
 						</c:if>
-						<c:if test="${!updateCheck.equals('off') }">
+						<c:if test="${i.replynum==updatingNum }">
 							<tr>
 								<td class="td1" width=65>${i.id}</td>
 								<td class="td2" width="370">
@@ -108,9 +108,7 @@
 									<input type="hidden" name="boardnum" value="${i.boardnum }">
 								</td>
 
-								<td class="td2" width="65">
-									
-								</td>
+								<td class="td2" width="65"></td>
 							</tr>
 						</c:if>
 					</c:forEach>

@@ -1,6 +1,7 @@
 package global.sesoc.web3.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -136,6 +137,16 @@ public class dao {
 		mapper mapper = session.getMapper(mapper.class);
 		mapper.deleteReply(replynum);
 	
+	}
+
+	public void replyUpdate(String replynum, String updatedText) {
+		// TODO Auto-generated method stub
+		mapper mapper = session.getMapper(mapper.class);
+		HashMap <String, String> map = new HashMap<>();
+		map.put("replynum",replynum);
+		map.put("updatedText", updatedText);
+		mapper.replyUpdate(map);
+		
 	}
 
 }

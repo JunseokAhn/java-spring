@@ -33,12 +33,11 @@ public class ReplyController {
 	}
 
 	@GetMapping(value = "replyUpdate")
-	public String replyUpdate(String replynum, String id, String boardnum, HttpSession session,
-			@RequestParam(value = "updateCheck", defaultValue = "off") String updateCheck) {
+	public String replyUpdate(String replynum, String id, String boardnum, HttpSession session, String updateCheck) {
 		String realId = (String) session.getAttribute("id");
 		if (realId.equals(id)) {
-			
-			return "redirect:/board/boardSearch?boardnum=" + boardnum + "updateCheck=" + updateCheck;
+
+			return "redirect:/board/boardSearch?boardnum=" + boardnum + "&replynum=" + replynum;
 		} else {
 			System.out.println("아이디가 다릅니다.");
 			return "redirect:/board/boardSearch?boardnum=" + boardnum;
@@ -46,10 +45,9 @@ public class ReplyController {
 	}
 
 	@PostMapping(value = "replyUpdate")
-	public String replyUpdate2(String replynum, String id, String boardnum, String updatedText, HttpSession session,
-			@RequestParam(value = "updateCheck", defaultValue = "off") String updateCheck) {
-
-		return "";
+	public String replyUpdate2(String replynum, String boardnum, String updatedText, HttpSession session) {
+		dao.replyUpdate(replynum, updatedText);
+		return "redirect:/board/boardSearch?boardnum=" + boardnum;
 	}
 
 	@GetMapping(value = "deleteReply")

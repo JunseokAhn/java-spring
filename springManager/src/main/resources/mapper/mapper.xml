@@ -110,6 +110,15 @@
 	</select>
 
 	<select id="deleteReply" parameterType="String">
-		delete web5_reply where replynum=#{replynum}
+		delete web5_reply where
+		replynum=#{replynum}
 	</select>
+
+	<update id="replyUpdate" parameterType="map">
+		update web5_reply
+		set text
+		= #{updatedText}
+		where replynum=#{replynum}
+
+	</update>
 </mapper>

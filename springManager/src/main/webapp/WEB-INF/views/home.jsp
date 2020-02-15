@@ -19,7 +19,7 @@
 			<ul style="margin: 0">
 				<li><a href="member/input">회원가입</a></li>
 				<li><a href="member/login">로그인</a></li>
-				<li><a href="member/admin">관리자메뉴</a></li>
+				<li><a href="admin/adminMain">관리자메뉴</a></li>
 			</ul>
 
 

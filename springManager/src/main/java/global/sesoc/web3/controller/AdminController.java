@@ -13,7 +13,7 @@ import global.sesoc.web3.dao.dao;
 import global.sesoc.web3.vo.Member_VO;
 
 
-@Controller
+@Controller @RequestMapping(value = "admin")
 public class AdminController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
@@ -21,10 +21,10 @@ public class AdminController {
 	@Autowired
 	private dao dao;
 
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminMain", method = RequestMethod.GET)
 	public String adminMain() {
 
-		return "admin";
+		return "admin/adminMain";
 	}
 
 	@RequestMapping(value = "/searchAll", method = RequestMethod.GET)
@@ -33,14 +33,14 @@ public class AdminController {
 		ArrayList<Member_VO> list = dao.searchAll();
 		model.addAttribute("list", list);
 
-		return "search2";
+		return "admin/search2";
 	}
 
 	@RequestMapping(value = "/deleting", method = RequestMethod.GET)
 	public String delete(String name) {
 
 		boolean res = dao.delete(name);
-		return "redirect:/searchAll";
+		return "redirect:/admin/searchAll";
 
 	}
 }

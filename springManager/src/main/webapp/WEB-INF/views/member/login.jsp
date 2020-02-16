@@ -13,7 +13,7 @@
 <body>
 	<div style="text-align: center;" class="divWhite">
 		<h1>로그인</h1>
-		<form action="login" method="post">
+		<form action="login" method="post" onsubmit="return redundancy()">
 			<table style="margin: 0 auto;">
 				<tr>
 					<td class="td1">ID</td>
@@ -42,6 +42,7 @@
 			userPw.value = '';
 
 		}
+		
 	</script>
 </body>
 </html>

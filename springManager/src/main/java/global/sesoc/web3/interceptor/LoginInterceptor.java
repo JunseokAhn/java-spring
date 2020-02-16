@@ -32,10 +32,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 		
-		if(id.equals('1')) {
-			response.sendRedirect(request.getContextPath()+"/admin/adminMain");
-			return super.preHandle(request, response, handler);
-		}
+		
+		  if(id.equals('1')) {
+		  response.sendRedirect(request.getContextPath()+"/admin/adminMain"); return
+		  false; }
+		
 		// 로그인 된 경우 요청한 경로로 진행
 		return super.preHandle(request, response, handler);
 	}

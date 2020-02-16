@@ -75,6 +75,10 @@ public class MemberController {
 			session.setAttribute("address", vo.getAddress());
 			session.setAttribute("email", vo.getAddress());
 		}
+		if(id.equals("1")) {
+			System.out.println("관리자Id 로그인");
+			return "admin/adminMain";
+		}
 		return "redirect:/";
 	}
 

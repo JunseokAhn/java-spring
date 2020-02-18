@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 <title>Home</title>
 </head>
 <body>
 <h1>Sample</h1>
+<a href=""></a>
 </body>
 </html>

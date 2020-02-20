@@ -1,1 +1,9 @@
 @charset "UTF-8";
+#text1,#text2, #text3{
+	cursor: pointer;
+	border: 1px solid blue;
+	color : red;
+	widows: 300px;
+	text-align: center;
+	font-weight: bold;
+}

@@ -31,4 +31,14 @@ public class SampleController {
 	public String goJQ1() {
 		return "ajax/js/jq1";
 	}
+
+	@RequestMapping(value = "jq2", method = RequestMethod.GET)
+	public String goJQ2() {
+		return "ajax/js/jq2";
+	}
+
+	@RequestMapping(value = "jq3", method = RequestMethod.GET)
+	public String goJQ3() {
+		return "ajax/js/jq3";
+	}
 }

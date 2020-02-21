@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="<c:url value="/resources/js/jquery-3.4.1.js/"/>"></script>
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		$('#bt1').on('click', test1);
 		$('#offevent').on('click', test2);
@@ -16,32 +17,77 @@
 		$('#text2').on('click', text2);
 		$('#text3').on('click', text3);
 		$('img').on('mouseover', function() {
-			/* alert($(this).css('width')); */
-			/* alert($(this).width()); */
+							/* alert($(this).css('width')); */
+							/* alert($(this).width()); */
 			$(this).width($(this).width() * 2)
 		})
+		
 		$('img').on('mouseout', function() {
 			$(this).width($(this).width() / 2)
 		})
-		$('img').on('click', function() {
-			$(this).attr('src', '<c:url value="/resources/img/default2.png"/>')
+		$('img').on('click',function() {
+			$(this).attr('src','<c:url value="/resources/img/default2.png"/>')
 		})
 		$('.bts').on('click', function() {
 			alert($(this).attr('data'))
 		})
+		var flag = -1;
+		$('#bt4').on('click',	function() {
+			flag++;
+			if (flag == 3) {
+			flag = 0;
+			}
+			
+			var name = [ 'default.png/','default2.png/','default3.png/' ];
+			var url1 = '<img class="linkimg" src="<c:url value="/resources/img/';
+			var url2 = '"/>">';
+			var tag = url1 + name[flag] + url2;
+			$('#output').html(tag);	
 
-		$('#bt4').on('click', function() {
-			var name = [ 'default.png', 'default2.png', 'default3.png' ];
-			var curl = '<c:url value="/resources/img/';
-			var curl2 = '"/>';
-			var tag = '';
-			$(name).each(function(index, item) {
-				tag += '<img src="'+curl+item+curl2+'">'
-			})
-
-			$('#output').html(tag)
+		
+			$('.linkimg').on('click', function(){
+			
+				switch(flag){
+				case 0:
+					location.href='https://www.op.gg/champion/maokai/statistics/top'
+					break;
+				case 1:
+					location.href='https://www.op.gg/champion/malphite/statistics/top'
+					break;
+				case 2:
+					location.href='https://www.op.gg/champion/sion/statistics/top'
+					break;
+				}
+			}) 
+		
+			
 		})
+		
+	
+		
+		$("input[type='text']").on('focus', function(){
+			$(this).removeClass('input1');
+			$(this).addClass('input2');
+		
+		});
+		
+		$("input[type='text']").on('blur', function(){
+			$(this).removeClass('input2');
+			$(this).addClass('input1')
+		
+		})
+	
+
+		$('#inputTest1').on('keyup', function(){
+			var text = $(this).val();
+			$('#inputTest2').html(text.length);
+		})
+	
+	
+	
 	})
+
+
 
 	function test1() {
 		alert('bt1실행')
@@ -72,6 +118,7 @@
 </script>
 <link href="<c:url value="/resources/css/default.css"/>" rel="stylesheet">
 
+
 <title>Home</title>
 </head>
 <body>
@@ -98,5 +145,10 @@
 		<input type="button" value="html()로 생성한 객체의 이벤트처리" id="bt4">
 	</p>
 	<div id="output"></div>
+	<p><input type="text" class="input1" id="inputTest1"></p>
+	글자수 : <div id="inputTest2">0</div>
+	<p><input type="text" class="input1"></p>
+	<p><input type="text" class="input1"></p>
+	
 </body>
 </html>

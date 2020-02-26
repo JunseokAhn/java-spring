@@ -4,11 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.jQuery.dao.DAO;
+import global.sesoc.jQuery.vo.VO;
 
 @Controller
 public class SampleController {
@@ -58,10 +60,11 @@ public class SampleController {
 	return "ajax/js/ajax1";
     }
 
-    @ResponseBody
+   
     @RequestMapping(value = "ajax2", method = RequestMethod.GET)
-    public void ajax2() {
+    public String ajax2() {
 	logger.debug("ajax2");
+	return "ajax/js/ajax2";
     }
 
     @ResponseBody
@@ -70,5 +73,21 @@ public class SampleController {
 	logger.debug("ajax2");
 	String res = str+str2;
 	return res;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "ajax3",method = RequestMethod.POST)
+    public String ajax4(String name, String age, String phone) {
+	String res=name;
+	logger.debug("이름 : {}, 나이 : {}, 폰 : {}",name,age,phone);
+	
+	return res;
+    }
+    
+    @ResponseBody
+    @PostMapping(value = "ajax4")
+    public VO ajax5(VO vo) {
+	logger.debug(vo.getAge());
+	return vo;
     }
 }

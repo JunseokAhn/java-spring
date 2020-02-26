@@ -8,5 +8,7 @@ import lombok.Data;
 @Data
 public class VO {
 
-
+    private String name;
+    private String age;
+    private String tel;
 }

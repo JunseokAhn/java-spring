@@ -1,6 +1,7 @@
 package global.sesoc.Ajax_Board.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import global.sesoc.Ajax_Board.vo.Comment;
 
@@ -14,4 +15,5 @@ public interface CommentMapper {
 	public ArrayList<Comment> list();
 	//데이터 삭제
 	public int delete(int num);
+	public int mode(Comment comment);
 }

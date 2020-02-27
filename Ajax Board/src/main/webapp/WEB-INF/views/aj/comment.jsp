@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,15 +79,20 @@ td.tdText {
 	function output(msg) {
 		//서버로부터 받은 목록을 반복문으로 처리
 		var str = '<table>';
-		$.each(msg, function(key, item) {
-			str += '<tr>';
-			str += '<td class="tdNum">' + item.num + '</td>';
-			str += '<td class="tdName">' + item.name + '</td>';
-			str += '<td class="tdText">' + item.text + '</td>';
-			//각 댓글마다 삭제 버튼을 만든다. 사용자 정의 속성 'data-num'에 삭제할 글 번호 대입
-			str += '<td><input type="button" value="삭제" class="btnDel" data-num="'+ item.num +'"></td>';
-			str += '</tr>';
-		});
+		$
+				.each(
+						msg,
+						function(key, item) {
+							str += '<tr>';
+							str += '<td class="tdNum">' + item.num + '</td>';
+							str += '<td class="tdName">' + item.name + '</td>';
+							str += '<td class="tdText" data-num="'+ item.num+'">'
+									+ item.text + '</td>';
+							//각 댓글마다 삭제 버튼을 만든다. 사용자 정의 속성 'data-num'에 삭제할 글 번호 대입
+							str += '<td><input type="button" value="삭제" class="btnDel" data-num="'+ item.num +'"></td>';
+							str += '<td><input type="button" value="수정" class="btnMod" data-num="'+ item.num +'"></td>';
+							str += '</tr>';
+						});
 		str += '</table>';
 
 		//목록 출력 영역에 내용 삽입
@@ -96,6 +100,7 @@ td.tdText {
 
 		//삭제 버튼들에 클릭이벤트 처리
 		$('input:button.btnDel').on('click', commentDel);
+		$('input:button.btnMod').on('click', commentMod);
 	}
 
 	//삭제 버튼 클릭했을 때 실행
@@ -103,18 +108,67 @@ td.tdText {
 		//클릭한 버튼의 'data-num' 속성값을 읽음
 		var num = $(this).attr('data-num');
 
-		//서버로 삭제할 글번호를 전달.
-		$.ajax({
-			url : 'delete',
-			type : 'POST',
-			data : {
-				num : num
-			},
-			success : function() {
-				alert('삭제되었습니다.');
-				init();
-			}
-		});
+		if ($(this).val() == '삭제') {
+
+			//서버로 삭제할 글번호를 전달.
+			$.ajax({
+				url : 'delete',
+				type : 'POST',
+				data : {
+					num : num
+				},
+				success : function() {
+					alert('삭제되었습니다.');
+					init();
+				}
+			});
+		}
+		if ($(this).val() == '취소') {
+			$('.btnDel[data-num=' + num + ']').val('삭제')
+			$('#text' + num).remove()
+
+			$('.tdText[data-num=' + num + ']').html(text)
+			$('.btnMod[data-num=' + num + ']').val('수정')
+
+		}
+	}
+	function commentMod() {
+		var num = $(this).attr('data-num');
+		//수정버튼일때
+		if ($('.btnMod[data-num=' + num + ']').val() == '수정') {
+
+			text = $('.tdText[data-num=' + num + ']').html()
+			$('.tdText[data-num=' + num + ']')
+					.html(
+							'<input type="text" id="text'+num+'" name="text" style="width: 300px;">');
+			$('.btnDel[data-num=' + num + ']').val('취소')
+			$('.btnMod[data-num=' + num + ']').val('확인')
+
+		}
+		//확인버튼일때
+		if ($('.btnMod[data-num=' + num + ']').val() == '확인') {
+
+			$('.btnMod[data-num=' + num + ']').on('click', function() {
+				$.ajax({
+					url : 'mode',
+					dataType : 'text',
+					type : 'post',
+					data : {
+						num : num,
+						text : $('#text' + num).val()
+					},
+					success : function() {
+						alert('수정성공')
+						init()
+					},
+					error : function(e) {
+						alert('수정실패')
+						init()
+					}
+				})
+			})
+
+		}
 	}
 </script>
 </head>
@@ -125,8 +179,10 @@ td.tdText {
 	<!-- 댓글 작성 폼 영역 -->
 	<div id="formDiv">
 		<form id="writeForm">
-			이름 <input type="text" id="name" name="name" style="width: 100px;">
-			내용 <input type="text" id="text" name="text" style="width: 300px;">
+			이름
+			<input type="text" id="name" name="name" style="width: 100px;">
+			내용
+			<input type="text" id="text" name="text" style="width: 300px;">
 			<input type="button" id="formButton" value="작성하기">
 		</form>
 	</div>

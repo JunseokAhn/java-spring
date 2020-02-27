@@ -33,4 +33,10 @@
 	delete from usercomment where num = #{num}
 </insert>
 
+<update id="mode" parameterType="Comment">
+	update usercomment
+	set text = #{text}
+	where num = #{num}
+	
+</update>
 </mapper>

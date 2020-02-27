@@ -1,6 +1,7 @@
 package global.sesoc.Ajax_Board.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,12 @@ public class CommentDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public int mode(Comment comment) {
+	    // TODO Auto-generated method stub
+	    CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
+	    int res = mapper.mode(comment);
+	    return res;
 	}
 }

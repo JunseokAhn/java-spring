@@ -10,12 +10,12 @@ import org.springframework.stereotype.Repository;
  * 개인정보 관련 DB처리를 담당
  */
 @Repository
-public class DAO {
+public class DAO2 {
 	@Autowired
-	@Resource(name = "sqlSesson")
+	@Resource(name = "sqlSesson2")
 	private SqlSession session;
 
 	public void test() {
-
+		
 	}
 }

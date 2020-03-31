@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring" xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
 	<!-- db.properties 읽어오기 -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location">
 			<value>classpath:db.properties</value>
 		</property>
 	</bean>
-	
+
 	<!-- db.properties의 설정 값을 읽어서 setting -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${driver}" />
@@ -17,28 +19,52 @@
 		<property name="username" value="${user}" />
 		<property name="password" value="${password}" />
 	</bean>
-		
+
+	<!-- MySQL dataSource -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property> <property name="url" value="jdbc:mysql://데이터베이스 주소:포트번호/스키마이름?useSSL=false&amp;serverTimezone=UTC"> </property> <property name="username" value="MySQL 계정"></property> <property name="password" value="비밀번호"></property> </bean> -->
+
+	<!-- 자신의 PC(로컬)에 MySql을 설치했을 경우 -->
+	<bean id="dataSource2" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/brr?useSSL=false&amp;serverTimezone=UTC">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="hrhr"></property>
+	</bean>
+
 	<!-- 트랙잭션 관리를 위한 빈설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
+	<bean id="transactionManager2" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource2" />
+	</bean>
+
 	<!-- sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 	</bean>
-	
+
+	<!-- sqlSessionFactory -->
+	<bean id="sqlSessionFactory2" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource2" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
 	<!-- sqlSession -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="sqlSession2" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" name="sqlSessionFactory" ref="sqlSessionFactory2" />
+	</bean>
 
 	<!-- file upload를 위한 bean 설정 -->
-	<bean name="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10485760"></property>
-	</bean>	
+	</bean>
 
 	<!-- API값을 RESTType으로 가지고 오기 위한 bean 설정 -->
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
